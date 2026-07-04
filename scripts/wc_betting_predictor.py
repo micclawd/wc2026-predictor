@@ -69,12 +69,13 @@ from wc_predictor_iter4e import TargetedDecisionRuleModel
 from wc_predictor_iter6 import adjust_elo_with_lineups
 from espn_lineups import fetch_all_upcoming_lineups, fetch_lineups_with_cache
 from betting_markets import compute_all_markets, add_fair_odds, find_value_bets
+from wc_r16_improvement import form_adjusted_elo
 
 try:
     from config import DOWNLOAD_DIR
 except ImportError:
     DOWNLOAD_DIR = Path("/home/z/my-project/download")
-MODEL_VERSION = "v1.4.0"
+MODEL_VERSION = "v1.4.1"
 
 
 # --------------------------------------------------------------------------
@@ -122,9 +123,10 @@ def main():
 
     print(f"  Lineups fetched: {len(lineups)}")
 
-    # 3. Adjust ELO with lineups
-    print(f"\n[3/5] Adjusting ELO with lineup-derived star_power ...")
-    teams_adj, lineup_debug = adjust_elo_with_lineups(teams, squads, lineups, star_weight=40.0)
+    # 3. Form-adjusted ELO (R32 goal-difference weighted) + lineup star-power adjust
+    print(f"\n[3/5] Adjusting ELO with form (R32 results) + lineup-derived star_power ...")
+    teams_form = form_adjusted_elo(matches, teams, k_form=25.0, gd_multiplier=0.3, blend=0.7)
+    teams_adj, lineup_debug = adjust_elo_with_lineups(teams_form, squads, lineups, star_weight=40.0)
     if lineup_debug:
         for code, d in lineup_debug.items():
             if d.get("fallback"):
@@ -236,7 +238,8 @@ def main():
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "model_version": MODEL_VERSION,
         "engine_config": {
-            "base_model": "iter-4e targeted decision rule",
+            "base_model": "iter-4e targeted decision rule + form_adjusted_elo (R32)",
+            "form_elo": {"k_form": 25.0, "gd_multiplier": 0.3, "blend": 0.7},
             "star_weight": 40.0,
             "host_bonus": 80.0,
             "form_weight": 0.5,

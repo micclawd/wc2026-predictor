@@ -7,6 +7,21 @@ The `model_version` field in `wc2026_betting_markets.json` reflects the current 
 
 ---
 
+## [v1.4.2] — 2026-07-04
+
+### Added
+- **`scripts/refresh_data_and_predict.sh`** — `git pull` upstream data repo + re-run
+  `wc_betting_predictor.py --force-refresh`. Idempotent; safe to run hourly.
+- **Hourly refresh cron wiring** (`wc2026-predictor-refresh-hourly.sh` wrapper)
+
+### Changed
+- **`wc_betting_predictor.py` now wires `form_adjusted_elo()` (Lever 3 from
+  `wc_r16_improvement.py`)** — R32 goal-difference-weighted form update
+  (`k_form=25.0`, `gd_multiplier=0.3`, `blend=0.7`) is now applied to
+  team ELO before lineup adjustment. Bumps `model_version` to `v1.4.1`.
+
+---
+
 ## [v1.4.1] — 2026-07-04
 
 ### Added

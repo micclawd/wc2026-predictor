@@ -1,8 +1,13 @@
 {
-  "generated_at": "2026-07-04T12:16:53.265318+00:00",
-  "model_version": "v1.4.0",
+  "generated_at": "2026-07-04T13:03:26.471209+00:00",
+  "model_version": "v1.4.1",
   "engine_config": {
-    "base_model": "iter-4e targeted decision rule",
+    "base_model": "iter-4e targeted decision rule + form_adjusted_elo (R32)",
+    "form_elo": {
+      "k_form": 25.0,
+      "gd_multiplier": 0.3,
+      "blend": 0.7
+    },
     "star_weight": 40.0,
     "host_bonus": 80.0,
     "form_weight": 0.5,
@@ -290,19 +295,19 @@
       "away_star_power": null,
       "markets": {
         "1X2": {
-          "home_win": 0.0177,
-          "home_win_fair_odds": 56.5,
-          "draw": 0.0328,
-          "draw_fair_odds": 30.49,
-          "away_win": 0.9495,
+          "home_win": 0.0184,
+          "home_win_fair_odds": 54.35,
+          "draw": 0.0332,
+          "draw_fair_odds": 30.12,
+          "away_win": 0.9484,
           "away_win_fair_odds": 1.05
         },
         "double_chance": {
-          "1X": 0.0505,
-          "1X_fair_odds": 19.8,
-          "12": 0.9672,
+          "1X": 0.0516,
+          "1X_fair_odds": 19.38,
+          "12": 0.9668,
           "12_fair_odds": 1.03,
-          "X2": 0.9823,
+          "X2": 0.9816,
           "X2_fair_odds": 1.02
         },
         "over_under": {
@@ -339,158 +344,158 @@
         },
         "asian_handicap": {
           "-2.5": {
-            "home_win": 0.0007,
-            "home_win_fair_odds": 1428.57,
+            "home_win": 0.0008,
+            "home_win_fair_odds": 1250.0,
             "push": 0.0,
-            "home_loss": 0.9993,
+            "home_loss": 0.9992,
             "home_loss_fair_odds": 1.0,
-            "away_win": 0.9993,
+            "away_win": 0.9992,
             "away_win_fair_odds": 1.0,
-            "away_loss": 0.0007,
-            "away_loss_fair_odds": 1428.57
+            "away_loss": 0.0008,
+            "away_loss_fair_odds": 1250.0
           },
           "-2.0": {
-            "home_win": 0.0007,
-            "home_win_fair_odds": 1428.57,
-            "push": 0.0035,
-            "push_fair_odds": 285.71,
-            "home_loss": 0.9958,
+            "home_win": 0.0008,
+            "home_win_fair_odds": 1250.0,
+            "push": 0.0037,
+            "push_fair_odds": 270.27,
+            "home_loss": 0.9955,
             "home_loss_fair_odds": 1.0,
-            "away_win": 0.9958,
+            "away_win": 0.9955,
             "away_win_fair_odds": 1.0,
-            "away_loss": 0.0007,
-            "away_loss_fair_odds": 1428.57
+            "away_loss": 0.0008,
+            "away_loss_fair_odds": 1250.0
           },
           "-1.5": {
-            "home_win": 0.0042,
-            "home_win_fair_odds": 238.1,
+            "home_win": 0.0045,
+            "home_win_fair_odds": 222.22,
             "push": 0.0,
-            "home_loss": 0.9958,
+            "home_loss": 0.9955,
             "home_loss_fair_odds": 1.0,
-            "away_win": 0.9958,
+            "away_win": 0.9955,
             "away_win_fair_odds": 1.0,
-            "away_loss": 0.0042,
-            "away_loss_fair_odds": 238.1
+            "away_loss": 0.0045,
+            "away_loss_fair_odds": 222.22
           },
           "-1.0": {
-            "home_win": 0.0042,
-            "home_win_fair_odds": 238.1,
-            "push": 0.0135,
-            "push_fair_odds": 74.07,
-            "home_loss": 0.9823,
+            "home_win": 0.0045,
+            "home_win_fair_odds": 222.22,
+            "push": 0.0139,
+            "push_fair_odds": 71.94,
+            "home_loss": 0.9816,
             "home_loss_fair_odds": 1.02,
-            "away_win": 0.9823,
+            "away_win": 0.9816,
             "away_win_fair_odds": 1.02,
-            "away_loss": 0.0042,
-            "away_loss_fair_odds": 238.1
+            "away_loss": 0.0045,
+            "away_loss_fair_odds": 222.22
           },
           "-0.5": {
-            "home_win": 0.0177,
-            "home_win_fair_odds": 56.5,
+            "home_win": 0.0184,
+            "home_win_fair_odds": 54.35,
             "push": 0.0,
-            "home_loss": 0.9823,
+            "home_loss": 0.9816,
             "home_loss_fair_odds": 1.02,
-            "away_win": 0.9823,
+            "away_win": 0.9816,
             "away_win_fair_odds": 1.02,
-            "away_loss": 0.0177,
-            "away_loss_fair_odds": 56.5
+            "away_loss": 0.0184,
+            "away_loss_fair_odds": 54.35
           },
           "0.0": {
-            "home_win": 0.0177,
-            "home_win_fair_odds": 56.5,
-            "push": 0.0328,
-            "push_fair_odds": 30.49,
-            "home_loss": 0.9495,
+            "home_win": 0.0184,
+            "home_win_fair_odds": 54.35,
+            "push": 0.0332,
+            "push_fair_odds": 30.12,
+            "home_loss": 0.9484,
             "home_loss_fair_odds": 1.05,
-            "away_win": 0.9495,
+            "away_win": 0.9484,
             "away_win_fair_odds": 1.05,
-            "away_loss": 0.0177,
-            "away_loss_fair_odds": 56.5
+            "away_loss": 0.0184,
+            "away_loss_fair_odds": 54.35
           },
           "0.5": {
-            "home_win": 0.0505,
-            "home_win_fair_odds": 19.8,
+            "home_win": 0.0516,
+            "home_win_fair_odds": 19.38,
             "push": 0.0,
-            "home_loss": 0.9495,
+            "home_loss": 0.9484,
             "home_loss_fair_odds": 1.05,
-            "away_win": 0.9495,
+            "away_win": 0.9484,
             "away_win_fair_odds": 1.05,
-            "away_loss": 0.0505,
-            "away_loss_fair_odds": 19.8
+            "away_loss": 0.0516,
+            "away_loss_fair_odds": 19.38
           },
           "1.0": {
-            "home_win": 0.0505,
-            "home_win_fair_odds": 19.8,
+            "home_win": 0.0516,
+            "home_win_fair_odds": 19.38,
             "push": 0.6653,
             "push_fair_odds": 1.5,
-            "home_loss": 0.2842,
-            "home_loss_fair_odds": 3.52,
-            "away_win": 0.2842,
-            "away_win_fair_odds": 3.52,
-            "away_loss": 0.0505,
-            "away_loss_fair_odds": 19.8
+            "home_loss": 0.2831,
+            "home_loss_fair_odds": 3.53,
+            "away_win": 0.2831,
+            "away_win_fair_odds": 3.53,
+            "away_loss": 0.0516,
+            "away_loss_fair_odds": 19.38
           },
           "1.5": {
-            "home_win": 0.7158,
-            "home_win_fair_odds": 1.4,
+            "home_win": 0.7169,
+            "home_win_fair_odds": 1.39,
             "push": 0.0,
-            "home_loss": 0.2842,
-            "home_loss_fair_odds": 3.52,
-            "away_win": 0.2842,
-            "away_win_fair_odds": 3.52,
-            "away_loss": 0.7158,
-            "away_loss_fair_odds": 1.4
+            "home_loss": 0.2831,
+            "home_loss_fair_odds": 3.53,
+            "away_win": 0.2831,
+            "away_win_fair_odds": 3.53,
+            "away_loss": 0.7169,
+            "away_loss_fair_odds": 1.39
           },
           "2.0": {
-            "home_win": 0.7158,
-            "home_win_fair_odds": 1.4,
-            "push": 0.1811,
-            "push_fair_odds": 5.52,
-            "home_loss": 0.1031,
-            "home_loss_fair_odds": 9.7,
-            "away_win": 0.1031,
-            "away_win_fair_odds": 9.7,
-            "away_loss": 0.7158,
-            "away_loss_fair_odds": 1.4
+            "home_win": 0.7169,
+            "home_win_fair_odds": 1.39,
+            "push": 0.1808,
+            "push_fair_odds": 5.53,
+            "home_loss": 0.1023,
+            "home_loss_fair_odds": 9.78,
+            "away_win": 0.1023,
+            "away_win_fair_odds": 9.78,
+            "away_loss": 0.7169,
+            "away_loss_fair_odds": 1.39
           },
           "2.5": {
-            "home_win": 0.8969,
+            "home_win": 0.8977,
             "home_win_fair_odds": 1.11,
             "push": 0.0,
-            "home_loss": 0.1031,
-            "home_loss_fair_odds": 9.7,
-            "away_win": 0.1031,
-            "away_win_fair_odds": 9.7,
-            "away_loss": 0.8969,
+            "home_loss": 0.1023,
+            "home_loss_fair_odds": 9.78,
+            "away_win": 0.1023,
+            "away_win_fair_odds": 9.78,
+            "away_loss": 0.8977,
             "away_loss_fair_odds": 1.11
           }
         },
         "btts": {
-          "yes": 0.2065,
-          "yes_fair_odds": 4.84,
-          "no": 0.7935,
+          "yes": 0.2074,
+          "yes_fair_odds": 4.82,
+          "no": 0.7926,
           "no_fair_odds": 1.26
         },
         "correct_score_top5": [
           {
             "score": "0-1",
-            "prob": 0.5745,
+            "prob": 0.5743,
             "prob_fair_odds": 1.74
           },
           {
             "score": "0-2",
-            "prob": 0.097,
-            "prob_fair_odds": 10.31
+            "prob": 0.0966,
+            "prob_fair_odds": 10.35
           },
           {
             "score": "1-2",
-            "prob": 0.0882,
-            "prob_fair_odds": 11.34
+            "prob": 0.0883,
+            "prob_fair_odds": 11.33
           },
           {
             "score": "0-3",
-            "prob": 0.0882,
-            "prob_fair_odds": 11.34
+            "prob": 0.0879,
+            "prob_fair_odds": 11.38
           },
           {
             "score": "1-3",
@@ -519,25 +524,25 @@
           "8_fair_odds": 2500.0
         },
         "winning_margin": {
-          "home_by_1": 0.0135,
-          "home_by_1_fair_odds": 74.07,
-          "home_by_2": 0.0035,
-          "home_by_2_fair_odds": 285.71,
-          "home_by_3plus": 0.0007,
-          "home_by_3plus_fair_odds": 1428.57,
-          "draw": 0.0328,
-          "draw_fair_odds": 30.49,
+          "home_by_1": 0.0139,
+          "home_by_1_fair_odds": 71.94,
+          "home_by_2": 0.0037,
+          "home_by_2_fair_odds": 270.27,
+          "home_by_3plus": 0.0008,
+          "home_by_3plus_fair_odds": 1250.0,
+          "draw": 0.0332,
+          "draw_fair_odds": 30.12,
           "away_by_1": 0.6653,
           "away_by_1_fair_odds": 1.5,
-          "away_by_2": 0.1811,
-          "away_by_2_fair_odds": 5.52,
-          "away_by_3plus": 0.1031,
-          "away_by_3plus_fair_odds": 9.7
+          "away_by_2": 0.1808,
+          "away_by_2_fair_odds": 5.53,
+          "away_by_3plus": 0.1023,
+          "away_by_3plus_fair_odds": 9.78
         },
         "expected_goals": {
-          "home": 0.24,
-          "home_fair_odds": 4.17,
-          "away": 1.57,
+          "home": 0.242,
+          "home_fair_odds": 4.13,
+          "away": 1.567,
           "total": 1.81
         }
       }
@@ -556,20 +561,20 @@
       "away_star_power": null,
       "markets": {
         "1X2": {
-          "home_win": 0.9389,
+          "home_win": 0.9344,
           "home_win_fair_odds": 1.07,
-          "draw": 0.0363,
-          "draw_fair_odds": 27.55,
-          "away_win": 0.0249,
-          "away_win_fair_odds": 40.16
+          "draw": 0.0375,
+          "draw_fair_odds": 26.67,
+          "away_win": 0.0281,
+          "away_win_fair_odds": 35.59
         },
         "double_chance": {
-          "1X": 0.9751,
+          "1X": 0.9719,
           "1X_fair_odds": 1.03,
-          "12": 0.9637,
+          "12": 0.9625,
           "12_fair_odds": 1.04,
-          "X2": 0.0611,
-          "X2_fair_odds": 16.37
+          "X2": 0.0656,
+          "X2_fair_odds": 15.24
         },
         "over_under": {
           "0.5": {
@@ -605,137 +610,137 @@
         },
         "asian_handicap": {
           "-2.5": {
-            "home_win": 0.0967,
-            "home_win_fair_odds": 10.34,
+            "home_win": 0.0943,
+            "home_win_fair_odds": 10.6,
             "push": 0.0,
-            "home_loss": 0.9033,
-            "home_loss_fair_odds": 1.11,
-            "away_win": 0.9033,
-            "away_win_fair_odds": 1.11,
-            "away_loss": 0.0967,
-            "away_loss_fair_odds": 10.34
+            "home_loss": 0.9057,
+            "home_loss_fair_odds": 1.1,
+            "away_win": 0.9057,
+            "away_win_fair_odds": 1.1,
+            "away_loss": 0.0943,
+            "away_loss_fair_odds": 10.6
           },
           "-2.0": {
-            "home_win": 0.0967,
-            "home_win_fair_odds": 10.34,
-            "push": 0.1776,
-            "push_fair_odds": 5.63,
-            "home_loss": 0.7257,
-            "home_loss_fair_odds": 1.38,
-            "away_win": 0.7257,
-            "away_win_fair_odds": 1.38,
-            "away_loss": 0.0967,
-            "away_loss_fair_odds": 10.34
+            "home_win": 0.0943,
+            "home_win_fair_odds": 10.6,
+            "push": 0.1761,
+            "push_fair_odds": 5.68,
+            "home_loss": 0.7296,
+            "home_loss_fair_odds": 1.37,
+            "away_win": 0.7296,
+            "away_win_fair_odds": 1.37,
+            "away_loss": 0.0943,
+            "away_loss_fair_odds": 10.6
           },
           "-1.5": {
-            "home_win": 0.2743,
-            "home_win_fair_odds": 3.65,
+            "home_win": 0.2704,
+            "home_win_fair_odds": 3.7,
             "push": 0.0,
-            "home_loss": 0.7257,
-            "home_loss_fair_odds": 1.38,
-            "away_win": 0.7257,
-            "away_win_fair_odds": 1.38,
-            "away_loss": 0.2743,
-            "away_loss_fair_odds": 3.65
+            "home_loss": 0.7296,
+            "home_loss_fair_odds": 1.37,
+            "away_win": 0.7296,
+            "away_win_fair_odds": 1.37,
+            "away_loss": 0.2704,
+            "away_loss_fair_odds": 3.7
           },
           "-1.0": {
-            "home_win": 0.2743,
-            "home_win_fair_odds": 3.65,
-            "push": 0.6646,
-            "push_fair_odds": 1.5,
-            "home_loss": 0.0611,
-            "home_loss_fair_odds": 16.37,
-            "away_win": 0.0611,
-            "away_win_fair_odds": 16.37,
-            "away_loss": 0.2743,
-            "away_loss_fair_odds": 3.65
+            "home_win": 0.2704,
+            "home_win_fair_odds": 3.7,
+            "push": 0.664,
+            "push_fair_odds": 1.51,
+            "home_loss": 0.0656,
+            "home_loss_fair_odds": 15.24,
+            "away_win": 0.0656,
+            "away_win_fair_odds": 15.24,
+            "away_loss": 0.2704,
+            "away_loss_fair_odds": 3.7
           },
           "-0.5": {
-            "home_win": 0.9389,
+            "home_win": 0.9344,
             "home_win_fair_odds": 1.07,
             "push": 0.0,
-            "home_loss": 0.0611,
-            "home_loss_fair_odds": 16.37,
-            "away_win": 0.0611,
-            "away_win_fair_odds": 16.37,
-            "away_loss": 0.9389,
+            "home_loss": 0.0656,
+            "home_loss_fair_odds": 15.24,
+            "away_win": 0.0656,
+            "away_win_fair_odds": 15.24,
+            "away_loss": 0.9344,
             "away_loss_fair_odds": 1.07
           },
           "0.0": {
-            "home_win": 0.9389,
+            "home_win": 0.9344,
             "home_win_fair_odds": 1.07,
-            "push": 0.0363,
-            "push_fair_odds": 27.55,
-            "home_loss": 0.0249,
-            "home_loss_fair_odds": 40.16,
-            "away_win": 0.0249,
-            "away_win_fair_odds": 40.16,
-            "away_loss": 0.9389,
+            "push": 0.0375,
+            "push_fair_odds": 26.67,
+            "home_loss": 0.0281,
+            "home_loss_fair_odds": 35.59,
+            "away_win": 0.0281,
+            "away_win_fair_odds": 35.59,
+            "away_loss": 0.9344,
             "away_loss_fair_odds": 1.07
           },
           "0.5": {
-            "home_win": 0.9751,
+            "home_win": 0.9719,
             "home_win_fair_odds": 1.03,
             "push": 0.0,
-            "home_loss": 0.0249,
-            "home_loss_fair_odds": 40.16,
-            "away_win": 0.0249,
-            "away_win_fair_odds": 40.16,
-            "away_loss": 0.9751,
+            "home_loss": 0.0281,
+            "home_loss_fair_odds": 35.59,
+            "away_win": 0.0281,
+            "away_win_fair_odds": 35.59,
+            "away_loss": 0.9719,
             "away_loss_fair_odds": 1.03
           },
           "1.0": {
-            "home_win": 0.9751,
+            "home_win": 0.9719,
             "home_win_fair_odds": 1.03,
-            "push": 0.0178,
-            "push_fair_odds": 56.18,
-            "home_loss": 0.0071,
-            "home_loss_fair_odds": 140.85,
-            "away_win": 0.0071,
-            "away_win_fair_odds": 140.85,
-            "away_loss": 0.9751,
+            "push": 0.0196,
+            "push_fair_odds": 51.02,
+            "home_loss": 0.0085,
+            "home_loss_fair_odds": 117.65,
+            "away_win": 0.0085,
+            "away_win_fair_odds": 117.65,
+            "away_loss": 0.9719,
             "away_loss_fair_odds": 1.03
           },
           "1.5": {
-            "home_win": 0.9929,
+            "home_win": 0.9915,
             "home_win_fair_odds": 1.01,
             "push": 0.0,
-            "home_loss": 0.0071,
-            "home_loss_fair_odds": 140.85,
-            "away_win": 0.0071,
-            "away_win_fair_odds": 140.85,
-            "away_loss": 0.9929,
+            "home_loss": 0.0085,
+            "home_loss_fair_odds": 117.65,
+            "away_win": 0.0085,
+            "away_win_fair_odds": 117.65,
+            "away_loss": 0.9915,
             "away_loss_fair_odds": 1.01
           },
           "2.0": {
-            "home_win": 0.9929,
+            "home_win": 0.9915,
             "home_win_fair_odds": 1.01,
-            "push": 0.0056,
-            "push_fair_odds": 178.57,
-            "home_loss": 0.0015,
-            "home_loss_fair_odds": 666.67,
-            "away_win": 0.0015,
-            "away_win_fair_odds": 666.67,
-            "away_loss": 0.9929,
+            "push": 0.0066,
+            "push_fair_odds": 151.52,
+            "home_loss": 0.0019,
+            "home_loss_fair_odds": 526.32,
+            "away_win": 0.0019,
+            "away_win_fair_odds": 526.32,
+            "away_loss": 0.9915,
             "away_loss_fair_odds": 1.01
           },
           "2.5": {
-            "home_win": 0.9985,
+            "home_win": 0.9981,
             "home_win_fair_odds": 1.0,
             "push": 0.0,
-            "home_loss": 0.0015,
-            "home_loss_fair_odds": 666.67,
-            "away_win": 0.0015,
-            "away_win_fair_odds": 666.67,
-            "away_loss": 0.9985,
+            "home_loss": 0.0019,
+            "home_loss_fair_odds": 526.32,
+            "away_win": 0.0019,
+            "away_win_fair_odds": 526.32,
+            "away_loss": 0.9981,
             "away_loss_fair_odds": 1.0
           }
         },
         "btts": {
-          "yes": 0.6887,
+          "yes": 0.691,
           "yes_fair_odds": 1.45,
-          "no": 0.3113,
-          "no_fair_odds": 3.21
+          "no": 0.309,
+          "no_fair_odds": 3.24
         },
         "correct_score_top5": [
           {
@@ -745,23 +750,23 @@
           },
           {
             "score": "1-0",
-            "prob": 0.0975,
-            "prob_fair_odds": 10.26
+            "prob": 0.0967,
+            "prob_fair_odds": 10.34
           },
           {
             "score": "2-0",
-            "prob": 0.0937,
-            "prob_fair_odds": 10.67
+            "prob": 0.0924,
+            "prob_fair_odds": 10.82
           },
           {
             "score": "3-0",
-            "prob": 0.0853,
-            "prob_fair_odds": 11.72
+            "prob": 0.0843,
+            "prob_fair_odds": 11.86
           },
           {
             "score": "3-1",
-            "prob": 0.0827,
-            "prob_fair_odds": 12.09
+            "prob": 0.0824,
+            "prob_fair_odds": 12.14
           }
         ],
         "total_goals": {
@@ -785,25 +790,25 @@
           "8_fair_odds": 2500.0
         },
         "winning_margin": {
-          "home_by_1": 0.6646,
-          "home_by_1_fair_odds": 1.5,
-          "home_by_2": 0.1776,
-          "home_by_2_fair_odds": 5.63,
-          "home_by_3plus": 0.0967,
-          "home_by_3plus_fair_odds": 10.34,
-          "draw": 0.0363,
-          "draw_fair_odds": 27.55,
-          "away_by_1": 0.0178,
-          "away_by_1_fair_odds": 56.18,
-          "away_by_2": 0.0056,
-          "away_by_2_fair_odds": 178.57,
-          "away_by_3plus": 0.0015,
-          "away_by_3plus_fair_odds": 666.67
+          "home_by_1": 0.664,
+          "home_by_1_fair_odds": 1.51,
+          "home_by_2": 0.1761,
+          "home_by_2_fair_odds": 5.68,
+          "home_by_3plus": 0.0943,
+          "home_by_3plus_fair_odds": 10.6,
+          "draw": 0.0375,
+          "draw_fair_odds": 26.67,
+          "away_by_1": 0.0196,
+          "away_by_1_fair_odds": 51.02,
+          "away_by_2": 0.0066,
+          "away_by_2_fair_odds": 151.52,
+          "away_by_3plus": 0.0019,
+          "away_by_3plus_fair_odds": 526.32
         },
         "expected_goals": {
-          "home": 2.023,
-          "away": 0.737,
-          "away_fair_odds": 1.36,
+          "home": 2.015,
+          "away": 0.745,
+          "away_fair_odds": 1.34,
           "total": 2.76
         }
       }
@@ -822,19 +827,19 @@
       "away_star_power": null,
       "markets": {
         "1X2": {
-          "home_win": 0.0192,
-          "home_win_fair_odds": 52.08,
-          "draw": 0.0337,
-          "draw_fair_odds": 29.67,
-          "away_win": 0.9471,
+          "home_win": 0.0196,
+          "home_win_fair_odds": 51.02,
+          "draw": 0.0339,
+          "draw_fair_odds": 29.5,
+          "away_win": 0.9465,
           "away_win_fair_odds": 1.06
         },
         "double_chance": {
-          "1X": 0.0529,
-          "1X_fair_odds": 18.9,
-          "12": 0.9663,
-          "12_fair_odds": 1.03,
-          "X2": 0.9808,
+          "1X": 0.0535,
+          "1X_fair_odds": 18.69,
+          "12": 0.9661,
+          "12_fair_odds": 1.04,
+          "X2": 0.9804,
           "X2_fair_odds": 1.02
         },
         "over_under": {
@@ -884,135 +889,135 @@
           "-2.0": {
             "home_win": 0.0009,
             "home_win_fair_odds": 1111.11,
-            "push": 0.0039,
-            "push_fair_odds": 256.41,
-            "home_loss": 0.9952,
+            "push": 0.004,
+            "push_fair_odds": 250.0,
+            "home_loss": 0.9951,
             "home_loss_fair_odds": 1.0,
-            "away_win": 0.9952,
+            "away_win": 0.9951,
             "away_win_fair_odds": 1.0,
             "away_loss": 0.0009,
             "away_loss_fair_odds": 1111.11
           },
           "-1.5": {
-            "home_win": 0.0048,
-            "home_win_fair_odds": 208.33,
+            "home_win": 0.0049,
+            "home_win_fair_odds": 204.08,
             "push": 0.0,
-            "home_loss": 0.9952,
+            "home_loss": 0.9951,
             "home_loss_fair_odds": 1.0,
-            "away_win": 0.9952,
+            "away_win": 0.9951,
             "away_win_fair_odds": 1.0,
-            "away_loss": 0.0048,
-            "away_loss_fair_odds": 208.33
+            "away_loss": 0.0049,
+            "away_loss_fair_odds": 204.08
           },
           "-1.0": {
-            "home_win": 0.0048,
-            "home_win_fair_odds": 208.33,
-            "push": 0.0144,
-            "push_fair_odds": 69.44,
-            "home_loss": 0.9808,
+            "home_win": 0.0049,
+            "home_win_fair_odds": 204.08,
+            "push": 0.0147,
+            "push_fair_odds": 68.03,
+            "home_loss": 0.9804,
             "home_loss_fair_odds": 1.02,
-            "away_win": 0.9808,
+            "away_win": 0.9804,
             "away_win_fair_odds": 1.02,
-            "away_loss": 0.0048,
-            "away_loss_fair_odds": 208.33
+            "away_loss": 0.0049,
+            "away_loss_fair_odds": 204.08
           },
           "-0.5": {
-            "home_win": 0.0192,
-            "home_win_fair_odds": 52.08,
+            "home_win": 0.0196,
+            "home_win_fair_odds": 51.02,
             "push": 0.0,
-            "home_loss": 0.9808,
+            "home_loss": 0.9804,
             "home_loss_fair_odds": 1.02,
-            "away_win": 0.9808,
+            "away_win": 0.9804,
             "away_win_fair_odds": 1.02,
-            "away_loss": 0.0192,
-            "away_loss_fair_odds": 52.08
+            "away_loss": 0.0196,
+            "away_loss_fair_odds": 51.02
           },
           "0.0": {
-            "home_win": 0.0192,
-            "home_win_fair_odds": 52.08,
-            "push": 0.0337,
-            "push_fair_odds": 29.67,
-            "home_loss": 0.9471,
+            "home_win": 0.0196,
+            "home_win_fair_odds": 51.02,
+            "push": 0.0339,
+            "push_fair_odds": 29.5,
+            "home_loss": 0.9465,
             "home_loss_fair_odds": 1.06,
-            "away_win": 0.9471,
+            "away_win": 0.9465,
             "away_win_fair_odds": 1.06,
-            "away_loss": 0.0192,
-            "away_loss_fair_odds": 52.08
+            "away_loss": 0.0196,
+            "away_loss_fair_odds": 51.02
           },
           "0.5": {
-            "home_win": 0.0529,
-            "home_win_fair_odds": 18.9,
+            "home_win": 0.0535,
+            "home_win_fair_odds": 18.69,
             "push": 0.0,
-            "home_loss": 0.9471,
+            "home_loss": 0.9465,
             "home_loss_fair_odds": 1.06,
-            "away_win": 0.9471,
+            "away_win": 0.9465,
             "away_win_fair_odds": 1.06,
-            "away_loss": 0.0529,
-            "away_loss_fair_odds": 18.9
+            "away_loss": 0.0535,
+            "away_loss_fair_odds": 18.69
           },
           "1.0": {
-            "home_win": 0.0529,
-            "home_win_fair_odds": 18.9,
-            "push": 0.6653,
+            "home_win": 0.0535,
+            "home_win_fair_odds": 18.69,
+            "push": 0.6652,
             "push_fair_odds": 1.5,
-            "home_loss": 0.2818,
+            "home_loss": 0.2813,
             "home_loss_fair_odds": 3.55,
-            "away_win": 0.2818,
+            "away_win": 0.2813,
             "away_win_fair_odds": 3.55,
-            "away_loss": 0.0529,
-            "away_loss_fair_odds": 18.9
+            "away_loss": 0.0535,
+            "away_loss_fair_odds": 18.69
           },
           "1.5": {
-            "home_win": 0.7182,
+            "home_win": 0.7187,
             "home_win_fair_odds": 1.39,
             "push": 0.0,
-            "home_loss": 0.2818,
+            "home_loss": 0.2813,
             "home_loss_fair_odds": 3.55,
-            "away_win": 0.2818,
+            "away_win": 0.2813,
             "away_win_fair_odds": 3.55,
-            "away_loss": 0.7182,
+            "away_loss": 0.7187,
             "away_loss_fair_odds": 1.39
           },
           "2.0": {
-            "home_win": 0.7182,
+            "home_win": 0.7187,
             "home_win_fair_odds": 1.39,
-            "push": 0.1803,
+            "push": 0.1801,
             "push_fair_odds": 5.55,
-            "home_loss": 0.1015,
-            "home_loss_fair_odds": 9.85,
-            "away_win": 0.1015,
-            "away_win_fair_odds": 9.85,
-            "away_loss": 0.7182,
+            "home_loss": 0.1011,
+            "home_loss_fair_odds": 9.89,
+            "away_win": 0.1011,
+            "away_win_fair_odds": 9.89,
+            "away_loss": 0.7187,
             "away_loss_fair_odds": 1.39
           },
           "2.5": {
-            "home_win": 0.8985,
+            "home_win": 0.8989,
             "home_win_fair_odds": 1.11,
             "push": 0.0,
-            "home_loss": 0.1015,
-            "home_loss_fair_odds": 9.85,
-            "away_win": 0.1015,
-            "away_win_fair_odds": 9.85,
-            "away_loss": 0.8985,
+            "home_loss": 0.1011,
+            "home_loss_fair_odds": 9.89,
+            "away_win": 0.1011,
+            "away_win_fair_odds": 9.89,
+            "away_loss": 0.8989,
             "away_loss_fair_odds": 1.11
           }
         },
         "btts": {
-          "yes": 0.2084,
-          "yes_fair_odds": 4.8,
-          "no": 0.7916,
+          "yes": 0.2088,
+          "yes_fair_odds": 4.79,
+          "no": 0.7912,
           "no_fair_odds": 1.26
         },
         "correct_score_top5": [
           {
             "score": "0-1",
-            "prob": 0.574,
+            "prob": 0.5739,
             "prob_fair_odds": 1.74
           },
           {
             "score": "0-2",
-            "prob": 0.0962,
-            "prob_fair_odds": 10.4
+            "prob": 0.096,
+            "prob_fair_odds": 10.42
           },
           {
             "score": "1-2",
@@ -1021,8 +1026,8 @@
           },
           {
             "score": "0-3",
-            "prob": 0.0875,
-            "prob_fair_odds": 11.43
+            "prob": 0.0873,
+            "prob_fair_odds": 11.45
           },
           {
             "score": "1-3",
@@ -1051,25 +1056,25 @@
           "8_fair_odds": 2500.0
         },
         "winning_margin": {
-          "home_by_1": 0.0144,
-          "home_by_1_fair_odds": 69.44,
-          "home_by_2": 0.0039,
-          "home_by_2_fair_odds": 256.41,
+          "home_by_1": 0.0147,
+          "home_by_1_fair_odds": 68.03,
+          "home_by_2": 0.004,
+          "home_by_2_fair_odds": 250.0,
           "home_by_3plus": 0.0009,
           "home_by_3plus_fair_odds": 1111.11,
-          "draw": 0.0337,
-          "draw_fair_odds": 29.67,
-          "away_by_1": 0.6653,
+          "draw": 0.0339,
+          "draw_fair_odds": 29.5,
+          "away_by_1": 0.6652,
           "away_by_1_fair_odds": 1.5,
-          "away_by_2": 0.1803,
+          "away_by_2": 0.1801,
           "away_by_2_fair_odds": 5.55,
-          "away_by_3plus": 0.1015,
-          "away_by_3plus_fair_odds": 9.85
+          "away_by_3plus": 0.1011,
+          "away_by_3plus_fair_odds": 9.89
         },
         "expected_goals": {
-          "home": 0.245,
-          "home_fair_odds": 4.08,
-          "away": 1.565,
+          "home": 0.246,
+          "home_fair_odds": 4.07,
+          "away": 1.564,
           "total": 1.81
         }
       }
@@ -1088,19 +1093,19 @@
       "away_star_power": null,
       "markets": {
         "1X2": {
-          "home_win": 0.0232,
-          "home_win_fair_odds": 43.1,
-          "draw": 0.0356,
-          "draw_fair_odds": 28.09,
-          "away_win": 0.9412,
+          "home_win": 0.0221,
+          "home_win_fair_odds": 45.25,
+          "draw": 0.0351,
+          "draw_fair_odds": 28.49,
+          "away_win": 0.9428,
           "away_win_fair_odds": 1.06
         },
         "double_chance": {
-          "1X": 0.0588,
-          "1X_fair_odds": 17.01,
-          "12": 0.9644,
+          "1X": 0.0572,
+          "1X_fair_odds": 17.48,
+          "12": 0.9649,
           "12_fair_odds": 1.04,
-          "X2": 0.9768,
+          "X2": 0.9779,
           "X2_fair_odds": 1.02
         },
         "over_under": {
@@ -1137,158 +1142,158 @@
         },
         "asian_handicap": {
           "-2.5": {
-            "home_win": 0.0013,
-            "home_win_fair_odds": 769.23,
+            "home_win": 0.0012,
+            "home_win_fair_odds": 833.33,
             "push": 0.0,
-            "home_loss": 0.9987,
+            "home_loss": 0.9988,
             "home_loss_fair_odds": 1.0,
-            "away_win": 0.9987,
+            "away_win": 0.9988,
             "away_win_fair_odds": 1.0,
-            "away_loss": 0.0013,
-            "away_loss_fair_odds": 769.23
+            "away_loss": 0.0012,
+            "away_loss_fair_odds": 833.33
           },
           "-2.0": {
-            "home_win": 0.0013,
-            "home_win_fair_odds": 769.23,
-            "push": 0.0051,
-            "push_fair_odds": 196.08,
-            "home_loss": 0.9936,
+            "home_win": 0.0012,
+            "home_win_fair_odds": 833.33,
+            "push": 0.0047,
+            "push_fair_odds": 212.77,
+            "home_loss": 0.9941,
             "home_loss_fair_odds": 1.01,
-            "away_win": 0.9936,
+            "away_win": 0.9941,
             "away_win_fair_odds": 1.01,
-            "away_loss": 0.0013,
-            "away_loss_fair_odds": 769.23
+            "away_loss": 0.0012,
+            "away_loss_fair_odds": 833.33
           },
           "-1.5": {
-            "home_win": 0.0064,
-            "home_win_fair_odds": 156.25,
+            "home_win": 0.0059,
+            "home_win_fair_odds": 169.49,
             "push": 0.0,
-            "home_loss": 0.9936,
+            "home_loss": 0.9941,
             "home_loss_fair_odds": 1.01,
-            "away_win": 0.9936,
+            "away_win": 0.9941,
             "away_win_fair_odds": 1.01,
-            "away_loss": 0.0064,
-            "away_loss_fair_odds": 156.25
+            "away_loss": 0.0059,
+            "away_loss_fair_odds": 169.49
           },
           "-1.0": {
-            "home_win": 0.0064,
-            "home_win_fair_odds": 156.25,
-            "push": 0.0168,
-            "push_fair_odds": 59.52,
-            "home_loss": 0.9768,
+            "home_win": 0.0059,
+            "home_win_fair_odds": 169.49,
+            "push": 0.0162,
+            "push_fair_odds": 61.73,
+            "home_loss": 0.9779,
             "home_loss_fair_odds": 1.02,
-            "away_win": 0.9768,
+            "away_win": 0.9779,
             "away_win_fair_odds": 1.02,
-            "away_loss": 0.0064,
-            "away_loss_fair_odds": 156.25
+            "away_loss": 0.0059,
+            "away_loss_fair_odds": 169.49
           },
           "-0.5": {
-            "home_win": 0.0232,
-            "home_win_fair_odds": 43.1,
+            "home_win": 0.0221,
+            "home_win_fair_odds": 45.25,
             "push": 0.0,
-            "home_loss": 0.9768,
+            "home_loss": 0.9779,
             "home_loss_fair_odds": 1.02,
-            "away_win": 0.9768,
+            "away_win": 0.9779,
             "away_win_fair_odds": 1.02,
-            "away_loss": 0.0232,
-            "away_loss_fair_odds": 43.1
+            "away_loss": 0.0221,
+            "away_loss_fair_odds": 45.25
           },
           "0.0": {
-            "home_win": 0.0232,
-            "home_win_fair_odds": 43.1,
-            "push": 0.0356,
-            "push_fair_odds": 28.09,
-            "home_loss": 0.9412,
+            "home_win": 0.0221,
+            "home_win_fair_odds": 45.25,
+            "push": 0.0351,
+            "push_fair_odds": 28.49,
+            "home_loss": 0.9428,
             "home_loss_fair_odds": 1.06,
-            "away_win": 0.9412,
+            "away_win": 0.9428,
             "away_win_fair_odds": 1.06,
-            "away_loss": 0.0232,
-            "away_loss_fair_odds": 43.1
+            "away_loss": 0.0221,
+            "away_loss_fair_odds": 45.25
           },
           "0.5": {
-            "home_win": 0.0588,
-            "home_win_fair_odds": 17.01,
+            "home_win": 0.0572,
+            "home_win_fair_odds": 17.48,
             "push": 0.0,
-            "home_loss": 0.9412,
+            "home_loss": 0.9428,
             "home_loss_fair_odds": 1.06,
-            "away_win": 0.9412,
+            "away_win": 0.9428,
             "away_win_fair_odds": 1.06,
-            "away_loss": 0.0588,
-            "away_loss_fair_odds": 17.01
+            "away_loss": 0.0572,
+            "away_loss_fair_odds": 17.48
           },
           "1.0": {
-            "home_win": 0.0588,
-            "home_win_fair_odds": 17.01,
-            "push": 0.6648,
+            "home_win": 0.0572,
+            "home_win_fair_odds": 17.48,
+            "push": 0.665,
             "push_fair_odds": 1.5,
-            "home_loss": 0.2764,
-            "home_loss_fair_odds": 3.62,
-            "away_win": 0.2764,
-            "away_win_fair_odds": 3.62,
-            "away_loss": 0.0588,
-            "away_loss_fair_odds": 17.01
+            "home_loss": 0.2779,
+            "home_loss_fair_odds": 3.6,
+            "away_win": 0.2779,
+            "away_win_fair_odds": 3.6,
+            "away_loss": 0.0572,
+            "away_loss_fair_odds": 17.48
           },
           "1.5": {
-            "home_win": 0.7236,
+            "home_win": 0.7221,
             "home_win_fair_odds": 1.38,
             "push": 0.0,
-            "home_loss": 0.2764,
-            "home_loss_fair_odds": 3.62,
-            "away_win": 0.2764,
-            "away_win_fair_odds": 3.62,
-            "away_loss": 0.7236,
+            "home_loss": 0.2779,
+            "home_loss_fair_odds": 3.6,
+            "away_win": 0.2779,
+            "away_win_fair_odds": 3.6,
+            "away_loss": 0.7221,
             "away_loss_fair_odds": 1.38
           },
           "2.0": {
-            "home_win": 0.7236,
+            "home_win": 0.7221,
             "home_win_fair_odds": 1.38,
-            "push": 0.1784,
-            "push_fair_odds": 5.61,
-            "home_loss": 0.098,
-            "home_loss_fair_odds": 10.2,
-            "away_win": 0.098,
-            "away_win_fair_odds": 10.2,
-            "away_loss": 0.7236,
+            "push": 0.1789,
+            "push_fair_odds": 5.59,
+            "home_loss": 0.0989,
+            "home_loss_fair_odds": 10.11,
+            "away_win": 0.0989,
+            "away_win_fair_odds": 10.11,
+            "away_loss": 0.7221,
             "away_loss_fair_odds": 1.38
           },
           "2.5": {
-            "home_win": 0.902,
+            "home_win": 0.9011,
             "home_win_fair_odds": 1.11,
             "push": 0.0,
-            "home_loss": 0.098,
-            "home_loss_fair_odds": 10.2,
-            "away_win": 0.098,
-            "away_win_fair_odds": 10.2,
-            "away_loss": 0.902,
+            "home_loss": 0.0989,
+            "home_loss_fair_odds": 10.11,
+            "away_win": 0.0989,
+            "away_win_fair_odds": 10.11,
+            "away_loss": 0.9011,
             "away_loss_fair_odds": 1.11
           }
         },
         "btts": {
-          "yes": 0.2123,
-          "yes_fair_odds": 4.71,
-          "no": 0.7877,
+          "yes": 0.2113,
+          "yes_fair_odds": 4.73,
+          "no": 0.7887,
           "no_fair_odds": 1.27
         },
         "correct_score_top5": [
           {
             "score": "0-1",
-            "prob": 0.573,
-            "prob_fair_odds": 1.75
+            "prob": 0.5733,
+            "prob_fair_odds": 1.74
           },
           {
             "score": "0-2",
-            "prob": 0.0944,
-            "prob_fair_odds": 10.59
+            "prob": 0.0949,
+            "prob_fair_odds": 10.54
           },
           {
             "score": "1-2",
-            "prob": 0.0888,
-            "prob_fair_odds": 11.26
+            "prob": 0.0887,
+            "prob_fair_odds": 11.27
           },
           {
             "score": "0-3",
-            "prob": 0.0859,
-            "prob_fair_odds": 11.64
+            "prob": 0.0863,
+            "prob_fair_odds": 11.59
           },
           {
             "score": "1-3",
@@ -1317,25 +1322,25 @@
           "8_fair_odds": 2500.0
         },
         "winning_margin": {
-          "home_by_1": 0.0168,
-          "home_by_1_fair_odds": 59.52,
-          "home_by_2": 0.0051,
-          "home_by_2_fair_odds": 196.08,
-          "home_by_3plus": 0.0013,
-          "home_by_3plus_fair_odds": 769.23,
-          "draw": 0.0356,
-          "draw_fair_odds": 28.09,
-          "away_by_1": 0.6648,
+          "home_by_1": 0.0162,
+          "home_by_1_fair_odds": 61.73,
+          "home_by_2": 0.0047,
+          "home_by_2_fair_odds": 212.77,
+          "home_by_3plus": 0.0012,
+          "home_by_3plus_fair_odds": 833.33,
+          "draw": 0.0351,
+          "draw_fair_odds": 28.49,
+          "away_by_1": 0.665,
           "away_by_1_fair_odds": 1.5,
-          "away_by_2": 0.1784,
-          "away_by_2_fair_odds": 5.61,
-          "away_by_3plus": 0.098,
-          "away_by_3plus_fair_odds": 10.2
+          "away_by_2": 0.1789,
+          "away_by_2_fair_odds": 5.59,
+          "away_by_3plus": 0.0989,
+          "away_by_3plus_fair_odds": 10.11
         },
         "expected_goals": {
-          "home": 0.257,
-          "home_fair_odds": 3.89,
-          "away": 1.553,
+          "home": 0.254,
+          "home_fair_odds": 3.94,
+          "away": 1.556,
           "total": 1.81
         }
       }
@@ -1354,20 +1359,20 @@
       "away_star_power": null,
       "markets": {
         "1X2": {
-          "home_win": 0.1112,
-          "home_win_fair_odds": 8.99,
+          "home_win": 0.1111,
+          "home_win_fair_odds": 9.0,
           "draw": 0.7397,
           "draw_fair_odds": 1.35,
-          "away_win": 0.149,
-          "away_win_fair_odds": 6.71
+          "away_win": 0.1492,
+          "away_win_fair_odds": 6.7
         },
         "double_chance": {
-          "1X": 0.851,
+          "1X": 0.8508,
           "1X_fair_odds": 1.18,
           "12": 0.2603,
           "12_fair_odds": 3.84,
-          "X2": 0.8888,
-          "X2_fair_odds": 1.13
+          "X2": 0.8889,
+          "X2_fair_odds": 1.12
         },
         "over_under": {
           "0.5": {
@@ -1418,114 +1423,114 @@
             "home_win_fair_odds": 303.03,
             "push": 0.0092,
             "push_fair_odds": 108.7,
-            "home_loss": 0.9875,
+            "home_loss": 0.9876,
             "home_loss_fair_odds": 1.01,
-            "away_win": 0.9875,
+            "away_win": 0.9876,
             "away_win_fair_odds": 1.01,
             "away_loss": 0.0033,
             "away_loss_fair_odds": 303.03
           },
           "-1.5": {
-            "home_win": 0.0125,
-            "home_win_fair_odds": 80.0,
+            "home_win": 0.0124,
+            "home_win_fair_odds": 80.65,
             "push": 0.0,
-            "home_loss": 0.9875,
+            "home_loss": 0.9876,
             "home_loss_fair_odds": 1.01,
-            "away_win": 0.9875,
+            "away_win": 0.9876,
             "away_win_fair_odds": 1.01,
-            "away_loss": 0.0125,
-            "away_loss_fair_odds": 80.0
+            "away_loss": 0.0124,
+            "away_loss_fair_odds": 80.65
           },
           "-1.0": {
-            "home_win": 0.0125,
-            "home_win_fair_odds": 80.0,
+            "home_win": 0.0124,
+            "home_win_fair_odds": 80.65,
             "push": 0.0987,
             "push_fair_odds": 10.13,
-            "home_loss": 0.8888,
-            "home_loss_fair_odds": 1.13,
-            "away_win": 0.8888,
-            "away_win_fair_odds": 1.13,
-            "away_loss": 0.0125,
-            "away_loss_fair_odds": 80.0
+            "home_loss": 0.8889,
+            "home_loss_fair_odds": 1.12,
+            "away_win": 0.8889,
+            "away_win_fair_odds": 1.12,
+            "away_loss": 0.0124,
+            "away_loss_fair_odds": 80.65
           },
           "-0.5": {
-            "home_win": 0.1112,
-            "home_win_fair_odds": 8.99,
+            "home_win": 0.1111,
+            "home_win_fair_odds": 9.0,
             "push": 0.0,
-            "home_loss": 0.8888,
-            "home_loss_fair_odds": 1.13,
-            "away_win": 0.8888,
-            "away_win_fair_odds": 1.13,
-            "away_loss": 0.1112,
-            "away_loss_fair_odds": 8.99
+            "home_loss": 0.8889,
+            "home_loss_fair_odds": 1.12,
+            "away_win": 0.8889,
+            "away_win_fair_odds": 1.12,
+            "away_loss": 0.1111,
+            "away_loss_fair_odds": 9.0
           },
           "0.0": {
-            "home_win": 0.1112,
-            "home_win_fair_odds": 8.99,
+            "home_win": 0.1111,
+            "home_win_fair_odds": 9.0,
             "push": 0.7397,
             "push_fair_odds": 1.35,
-            "home_loss": 0.149,
-            "home_loss_fair_odds": 6.71,
-            "away_win": 0.149,
-            "away_win_fair_odds": 6.71,
-            "away_loss": 0.1112,
-            "away_loss_fair_odds": 8.99
+            "home_loss": 0.1492,
+            "home_loss_fair_odds": 6.7,
+            "away_win": 0.1492,
+            "away_win_fair_odds": 6.7,
+            "away_loss": 0.1111,
+            "away_loss_fair_odds": 9.0
           },
           "0.5": {
-            "home_win": 0.851,
+            "home_win": 0.8508,
             "home_win_fair_odds": 1.18,
             "push": 0.0,
-            "home_loss": 0.149,
-            "home_loss_fair_odds": 6.71,
-            "away_win": 0.149,
-            "away_win_fair_odds": 6.71,
-            "away_loss": 0.851,
+            "home_loss": 0.1492,
+            "home_loss_fair_odds": 6.7,
+            "away_win": 0.1492,
+            "away_win_fair_odds": 6.7,
+            "away_loss": 0.8508,
             "away_loss_fair_odds": 1.18
           },
           "1.0": {
-            "home_win": 0.851,
+            "home_win": 0.8508,
             "home_win_fair_odds": 1.18,
             "push": 0.1121,
             "push_fair_odds": 8.92,
-            "home_loss": 0.037,
-            "home_loss_fair_odds": 27.03,
-            "away_win": 0.037,
-            "away_win_fair_odds": 27.03,
-            "away_loss": 0.851,
+            "home_loss": 0.0371,
+            "home_loss_fair_odds": 26.95,
+            "away_win": 0.0371,
+            "away_win_fair_odds": 26.95,
+            "away_loss": 0.8508,
             "away_loss_fair_odds": 1.18
           },
           "1.5": {
-            "home_win": 0.963,
+            "home_win": 0.9629,
             "home_win_fair_odds": 1.04,
             "push": 0.0,
-            "home_loss": 0.037,
-            "home_loss_fair_odds": 27.03,
-            "away_win": 0.037,
-            "away_win_fair_odds": 27.03,
-            "away_loss": 0.963,
+            "home_loss": 0.0371,
+            "home_loss_fair_odds": 26.95,
+            "away_win": 0.0371,
+            "away_win_fair_odds": 26.95,
+            "away_loss": 0.9629,
             "away_loss_fair_odds": 1.04
           },
           "2.0": {
-            "home_win": 0.963,
+            "home_win": 0.9629,
             "home_win_fair_odds": 1.04,
             "push": 0.0225,
             "push_fair_odds": 44.44,
-            "home_loss": 0.0145,
-            "home_loss_fair_odds": 68.97,
-            "away_win": 0.0145,
-            "away_win_fair_odds": 68.97,
-            "away_loss": 0.963,
+            "home_loss": 0.0146,
+            "home_loss_fair_odds": 68.49,
+            "away_win": 0.0146,
+            "away_win_fair_odds": 68.49,
+            "away_loss": 0.9629,
             "away_loss_fair_odds": 1.04
           },
           "2.5": {
-            "home_win": 0.9855,
+            "home_win": 0.9854,
             "home_win_fair_odds": 1.01,
             "push": 0.0,
-            "home_loss": 0.0145,
-            "home_loss_fair_odds": 68.97,
-            "away_win": 0.0145,
-            "away_win_fair_odds": 68.97,
-            "away_loss": 0.9855,
+            "home_loss": 0.0146,
+            "home_loss_fair_odds": 68.49,
+            "away_win": 0.0146,
+            "away_win_fair_odds": 68.49,
+            "away_loss": 0.9854,
             "away_loss_fair_odds": 1.01
           }
         },
@@ -1538,7 +1543,7 @@
         "correct_score_top5": [
           {
             "score": "1-1",
-            "prob": 0.5687,
+            "prob": 0.5686,
             "prob_fair_odds": 1.76
           },
           {
@@ -1553,8 +1558,8 @@
           },
           {
             "score": "1-0",
-            "prob": 0.0878,
-            "prob_fair_odds": 11.39
+            "prob": 0.0877,
+            "prob_fair_odds": 11.4
           },
           {
             "score": "2-2",
@@ -1595,13 +1600,13 @@
           "away_by_1_fair_odds": 8.92,
           "away_by_2": 0.0225,
           "away_by_2_fair_odds": 44.44,
-          "away_by_3plus": 0.0145,
-          "away_by_3plus_fair_odds": 68.97
+          "away_by_3plus": 0.0146,
+          "away_by_3plus_fair_odds": 68.49
         },
         "expected_goals": {
-          "home": 0.916,
+          "home": 0.915,
           "home_fair_odds": 1.09,
-          "away": 0.994,
+          "away": 0.995,
           "away_fair_odds": 1.01,
           "total": 1.91
         }
@@ -1621,121 +1626,121 @@
       "away_star_power": null,
       "markets": {
         "1X2": {
-          "home_win": 0.9689,
+          "home_win": 0.9691,
           "home_win_fair_odds": 1.03,
-          "draw": 0.0238,
-          "draw_fair_odds": 42.02,
+          "draw": 0.0236,
+          "draw_fair_odds": 42.37,
           "away_win": 0.0073,
           "away_win_fair_odds": 136.99
         },
         "double_chance": {
           "1X": 0.9927,
           "1X_fair_odds": 1.01,
-          "12": 0.9762,
+          "12": 0.9764,
           "12_fair_odds": 1.02,
-          "X2": 0.0311,
-          "X2_fair_odds": 32.15
+          "X2": 0.0309,
+          "X2_fair_odds": 32.36
         },
         "over_under": {
           "0.5": {
-            "over": 0.9875,
+            "over": 0.9876,
             "over_fair_odds": 1.01,
-            "under": 0.0125,
-            "under_fair_odds": 80.0
+            "under": 0.0124,
+            "under_fair_odds": 80.65
           },
           "1.5": {
-            "over": 0.8814,
+            "over": 0.8817,
             "over_fair_odds": 1.13,
-            "under": 0.1186,
-            "under_fair_odds": 8.43
+            "under": 0.1183,
+            "under_fair_odds": 8.45
           },
           "2.5": {
-            "over": 0.7678,
+            "over": 0.7681,
             "over_fair_odds": 1.3,
-            "under": 0.2322,
+            "under": 0.2319,
             "under_fair_odds": 4.31
           },
           "3.5": {
-            "over": 0.1108,
-            "over_fair_odds": 9.03,
-            "under": 0.8892,
+            "over": 0.1111,
+            "over_fair_odds": 9.0,
+            "under": 0.8889,
             "under_fair_odds": 1.12
           },
           "4.5": {
-            "over": 0.0159,
-            "over_fair_odds": 62.89,
-            "under": 0.9841,
+            "over": 0.0161,
+            "over_fair_odds": 62.11,
+            "under": 0.9839,
             "under_fair_odds": 1.02
           }
         },
         "asian_handicap": {
           "-2.5": {
-            "home_win": 0.5946,
+            "home_win": 0.5949,
             "home_win_fair_odds": 1.68,
             "push": 0.0,
-            "home_loss": 0.4054,
+            "home_loss": 0.4051,
             "home_loss_fair_odds": 2.47,
-            "away_win": 0.4054,
+            "away_win": 0.4051,
             "away_win_fair_odds": 2.47,
-            "away_loss": 0.5946,
+            "away_loss": 0.5949,
             "away_loss_fair_odds": 1.68
           },
           "-2.0": {
-            "home_win": 0.5946,
+            "home_win": 0.5949,
             "home_win_fair_odds": 1.68,
             "push": 0.1863,
             "push_fair_odds": 5.37,
-            "home_loss": 0.2191,
-            "home_loss_fair_odds": 4.56,
-            "away_win": 0.2191,
-            "away_win_fair_odds": 4.56,
-            "away_loss": 0.5946,
+            "home_loss": 0.2188,
+            "home_loss_fair_odds": 4.57,
+            "away_win": 0.2188,
+            "away_win_fair_odds": 4.57,
+            "away_loss": 0.5949,
             "away_loss_fair_odds": 1.68
           },
           "-1.5": {
-            "home_win": 0.7809,
+            "home_win": 0.7812,
             "home_win_fair_odds": 1.28,
             "push": 0.0,
-            "home_loss": 0.2191,
-            "home_loss_fair_odds": 4.56,
-            "away_win": 0.2191,
-            "away_win_fair_odds": 4.56,
-            "away_loss": 0.7809,
+            "home_loss": 0.2188,
+            "home_loss_fair_odds": 4.57,
+            "away_win": 0.2188,
+            "away_win_fair_odds": 4.57,
+            "away_loss": 0.7812,
             "away_loss_fair_odds": 1.28
           },
           "-1.0": {
-            "home_win": 0.7809,
+            "home_win": 0.7812,
             "home_win_fair_odds": 1.28,
-            "push": 0.188,
+            "push": 0.1879,
             "push_fair_odds": 5.32,
-            "home_loss": 0.0311,
-            "home_loss_fair_odds": 32.15,
-            "away_win": 0.0311,
-            "away_win_fair_odds": 32.15,
-            "away_loss": 0.7809,
+            "home_loss": 0.0309,
+            "home_loss_fair_odds": 32.36,
+            "away_win": 0.0309,
+            "away_win_fair_odds": 32.36,
+            "away_loss": 0.7812,
             "away_loss_fair_odds": 1.28
           },
           "-0.5": {
-            "home_win": 0.9689,
+            "home_win": 0.9691,
             "home_win_fair_odds": 1.03,
             "push": 0.0,
-            "home_loss": 0.0311,
-            "home_loss_fair_odds": 32.15,
-            "away_win": 0.0311,
-            "away_win_fair_odds": 32.15,
-            "away_loss": 0.9689,
+            "home_loss": 0.0309,
+            "home_loss_fair_odds": 32.36,
+            "away_win": 0.0309,
+            "away_win_fair_odds": 32.36,
+            "away_loss": 0.9691,
             "away_loss_fair_odds": 1.03
           },
           "0.0": {
-            "home_win": 0.9689,
+            "home_win": 0.9691,
             "home_win_fair_odds": 1.03,
-            "push": 0.0238,
-            "push_fair_odds": 42.02,
+            "push": 0.0236,
+            "push_fair_odds": 42.37,
             "home_loss": 0.0073,
             "home_loss_fair_odds": 136.99,
             "away_win": 0.0073,
             "away_win_fair_odds": 136.99,
-            "away_loss": 0.9689,
+            "away_loss": 0.9691,
             "away_loss_fair_odds": 1.03
           },
           "0.5": {
@@ -1797,15 +1802,15 @@
           }
         },
         "btts": {
-          "yes": 0.189,
+          "yes": 0.1891,
           "yes_fair_odds": 5.29,
-          "no": 0.811,
+          "no": 0.8109,
           "no_fair_odds": 1.23
         },
         "correct_score_top5": [
           {
             "score": "3-0",
-            "prob": 0.5703,
+            "prob": 0.5704,
             "prob_fair_odds": 1.75
           },
           {
@@ -1815,8 +1820,8 @@
           },
           {
             "score": "1-0",
-            "prob": 0.1017,
-            "prob_fair_odds": 9.83
+            "prob": 0.1016,
+            "prob_fair_odds": 9.84
           },
           {
             "score": "2-1",
@@ -1830,34 +1835,34 @@
           }
         ],
         "total_goals": {
-          "0": 0.0125,
-          "0_fair_odds": 80.0,
-          "1": 0.1061,
-          "1_fair_odds": 9.43,
-          "2": 0.1136,
-          "2_fair_odds": 8.8,
-          "3": 0.657,
+          "0": 0.0124,
+          "0_fair_odds": 80.65,
+          "1": 0.1059,
+          "1_fair_odds": 9.44,
+          "2": 0.1135,
+          "2_fair_odds": 8.81,
+          "3": 0.6571,
           "3_fair_odds": 1.52,
-          "4": 0.0949,
-          "4_fair_odds": 10.54,
+          "4": 0.095,
+          "4_fair_odds": 10.53,
           "5": 0.0099,
           "5_fair_odds": 101.01,
           "6": 0.0041,
           "6_fair_odds": 243.9,
-          "7": 0.0014,
-          "7_fair_odds": 714.29,
-          "8": 0.0004,
-          "8_fair_odds": 2500.0
+          "7": 0.0015,
+          "7_fair_odds": 666.67,
+          "8": 0.0005,
+          "8_fair_odds": 2000.0
         },
         "winning_margin": {
-          "home_by_1": 0.188,
+          "home_by_1": 0.1879,
           "home_by_1_fair_odds": 5.32,
           "home_by_2": 0.1863,
           "home_by_2_fair_odds": 5.37,
-          "home_by_3plus": 0.5946,
+          "home_by_3plus": 0.5949,
           "home_by_3plus_fair_odds": 1.68,
-          "draw": 0.0238,
-          "draw_fair_odds": 42.02,
+          "draw": 0.0236,
+          "draw_fair_odds": 42.37,
           "away_by_1": 0.0062,
           "away_by_1_fair_odds": 161.29,
           "away_by_2": 0.001,
@@ -1866,10 +1871,10 @@
           "away_by_3plus_fair_odds": 10000.0
         },
         "expected_goals": {
-          "home": 2.57,
+          "home": 2.571,
           "away": 0.202,
           "away_fair_odds": 4.95,
-          "total": 2.772
+          "total": 2.773
         }
       }
     },
@@ -1887,19 +1892,19 @@
       "away_star_power": null,
       "markets": {
         "1X2": {
-          "home_win": 0.1149,
-          "home_win_fair_odds": 8.7,
-          "draw": 0.7404,
+          "home_win": 0.1131,
+          "home_win_fair_odds": 8.84,
+          "draw": 0.7401,
           "draw_fair_odds": 1.35,
-          "away_win": 0.1447,
-          "away_win_fair_odds": 6.91
+          "away_win": 0.1468,
+          "away_win_fair_odds": 6.81
         },
         "double_chance": {
-          "1X": 0.8553,
+          "1X": 0.8532,
           "1X_fair_odds": 1.17,
-          "12": 0.2596,
+          "12": 0.2599,
           "12_fair_odds": 3.85,
-          "X2": 0.8851,
+          "X2": 0.8869,
           "X2_fair_odds": 1.13
         },
         "over_under": {
@@ -1936,148 +1941,148 @@
         },
         "asian_handicap": {
           "-2.5": {
-            "home_win": 0.004,
-            "home_win_fair_odds": 250.0,
+            "home_win": 0.0036,
+            "home_win_fair_odds": 277.78,
             "push": 0.0,
-            "home_loss": 0.996,
+            "home_loss": 0.9964,
             "home_loss_fair_odds": 1.0,
-            "away_win": 0.996,
+            "away_win": 0.9964,
             "away_win_fair_odds": 1.0,
-            "away_loss": 0.004,
-            "away_loss_fair_odds": 250.0
+            "away_loss": 0.0036,
+            "away_loss_fair_odds": 277.78
           },
           "-2.0": {
-            "home_win": 0.004,
-            "home_win_fair_odds": 250.0,
-            "push": 0.0105,
-            "push_fair_odds": 95.24,
-            "home_loss": 0.9855,
+            "home_win": 0.0036,
+            "home_win_fair_odds": 277.78,
+            "push": 0.0098,
+            "push_fair_odds": 102.04,
+            "home_loss": 0.9865,
             "home_loss_fair_odds": 1.01,
-            "away_win": 0.9855,
+            "away_win": 0.9865,
             "away_win_fair_odds": 1.01,
-            "away_loss": 0.004,
-            "away_loss_fair_odds": 250.0
+            "away_loss": 0.0036,
+            "away_loss_fair_odds": 277.78
           },
           "-1.5": {
-            "home_win": 0.0145,
-            "home_win_fair_odds": 68.97,
+            "home_win": 0.0135,
+            "home_win_fair_odds": 74.07,
             "push": 0.0,
-            "home_loss": 0.9855,
+            "home_loss": 0.9865,
             "home_loss_fair_odds": 1.01,
-            "away_win": 0.9855,
+            "away_win": 0.9865,
             "away_win_fair_odds": 1.01,
-            "away_loss": 0.0145,
-            "away_loss_fair_odds": 68.97
+            "away_loss": 0.0135,
+            "away_loss_fair_odds": 74.07
           },
           "-1.0": {
-            "home_win": 0.0145,
-            "home_win_fair_odds": 68.97,
-            "push": 0.1005,
-            "push_fair_odds": 9.95,
-            "home_loss": 0.8851,
+            "home_win": 0.0135,
+            "home_win_fair_odds": 74.07,
+            "push": 0.0996,
+            "push_fair_odds": 10.04,
+            "home_loss": 0.8869,
             "home_loss_fair_odds": 1.13,
-            "away_win": 0.8851,
+            "away_win": 0.8869,
             "away_win_fair_odds": 1.13,
-            "away_loss": 0.0145,
-            "away_loss_fair_odds": 68.97
+            "away_loss": 0.0135,
+            "away_loss_fair_odds": 74.07
           },
           "-0.5": {
-            "home_win": 0.1149,
-            "home_win_fair_odds": 8.7,
+            "home_win": 0.1131,
+            "home_win_fair_odds": 8.84,
             "push": 0.0,
-            "home_loss": 0.8851,
+            "home_loss": 0.8869,
             "home_loss_fair_odds": 1.13,
-            "away_win": 0.8851,
+            "away_win": 0.8869,
             "away_win_fair_odds": 1.13,
-            "away_loss": 0.1149,
-            "away_loss_fair_odds": 8.7
+            "away_loss": 0.1131,
+            "away_loss_fair_odds": 8.84
           },
           "0.0": {
-            "home_win": 0.1149,
-            "home_win_fair_odds": 8.7,
-            "push": 0.7404,
+            "home_win": 0.1131,
+            "home_win_fair_odds": 8.84,
+            "push": 0.7401,
             "push_fair_odds": 1.35,
-            "home_loss": 0.1447,
-            "home_loss_fair_odds": 6.91,
-            "away_win": 0.1447,
-            "away_win_fair_odds": 6.91,
-            "away_loss": 0.1149,
-            "away_loss_fair_odds": 8.7
+            "home_loss": 0.1468,
+            "home_loss_fair_odds": 6.81,
+            "away_win": 0.1468,
+            "away_win_fair_odds": 6.81,
+            "away_loss": 0.1131,
+            "away_loss_fair_odds": 8.84
           },
           "0.5": {
-            "home_win": 0.8553,
+            "home_win": 0.8532,
             "home_win_fair_odds": 1.17,
             "push": 0.0,
-            "home_loss": 0.1447,
-            "home_loss_fair_odds": 6.91,
-            "away_win": 0.1447,
-            "away_win_fair_odds": 6.91,
-            "away_loss": 0.8553,
+            "home_loss": 0.1468,
+            "home_loss_fair_odds": 6.81,
+            "away_win": 0.1468,
+            "away_win_fair_odds": 6.81,
+            "away_loss": 0.8532,
             "away_loss_fair_odds": 1.17
           },
           "1.0": {
-            "home_win": 0.8553,
+            "home_win": 0.8532,
             "home_win_fair_odds": 1.17,
-            "push": 0.111,
-            "push_fair_odds": 9.01,
-            "home_loss": 0.0337,
-            "home_loss_fair_odds": 29.67,
-            "away_win": 0.0337,
-            "away_win_fair_odds": 29.67,
-            "away_loss": 0.8553,
+            "push": 0.1115,
+            "push_fair_odds": 8.97,
+            "home_loss": 0.0353,
+            "home_loss_fair_odds": 28.33,
+            "away_win": 0.0353,
+            "away_win_fair_odds": 28.33,
+            "away_loss": 0.8532,
             "away_loss_fair_odds": 1.17
           },
           "1.5": {
-            "home_win": 0.9663,
-            "home_win_fair_odds": 1.03,
+            "home_win": 0.9647,
+            "home_win_fair_odds": 1.04,
             "push": 0.0,
-            "home_loss": 0.0337,
-            "home_loss_fair_odds": 29.67,
-            "away_win": 0.0337,
-            "away_win_fair_odds": 29.67,
-            "away_loss": 0.9663,
-            "away_loss_fair_odds": 1.03
+            "home_loss": 0.0353,
+            "home_loss_fair_odds": 28.33,
+            "away_win": 0.0353,
+            "away_win_fair_odds": 28.33,
+            "away_loss": 0.9647,
+            "away_loss_fair_odds": 1.04
           },
           "2.0": {
-            "home_win": 0.9663,
-            "home_win_fair_odds": 1.03,
-            "push": 0.0209,
-            "push_fair_odds": 47.85,
-            "home_loss": 0.0128,
-            "home_loss_fair_odds": 78.12,
-            "away_win": 0.0128,
-            "away_win_fair_odds": 78.12,
-            "away_loss": 0.9663,
-            "away_loss_fair_odds": 1.03
+            "home_win": 0.9647,
+            "home_win_fair_odds": 1.04,
+            "push": 0.0217,
+            "push_fair_odds": 46.08,
+            "home_loss": 0.0136,
+            "home_loss_fair_odds": 73.53,
+            "away_win": 0.0136,
+            "away_win_fair_odds": 73.53,
+            "away_loss": 0.9647,
+            "away_loss_fair_odds": 1.04
           },
           "2.5": {
-            "home_win": 0.9872,
+            "home_win": 0.9864,
             "home_win_fair_odds": 1.01,
             "push": 0.0,
-            "home_loss": 0.0128,
-            "home_loss_fair_odds": 78.12,
-            "away_win": 0.0128,
-            "away_win_fair_odds": 78.12,
-            "away_loss": 0.9872,
+            "home_loss": 0.0136,
+            "home_loss_fair_odds": 73.53,
+            "away_win": 0.0136,
+            "away_win_fair_odds": 73.53,
+            "away_loss": 0.9864,
             "away_loss_fair_odds": 1.01
           }
         },
         "btts": {
-          "yes": 0.6963,
+          "yes": 0.6958,
           "yes_fair_odds": 1.44,
-          "no": 0.3037,
+          "no": 0.3042,
           "no_fair_odds": 3.29
         },
         "correct_score_top5": [
           {
             "score": "1-1",
-            "prob": 0.569,
+            "prob": 0.5689,
             "prob_fair_odds": 1.76
           },
           {
             "score": "0-1",
-            "prob": 0.0941,
-            "prob_fair_odds": 10.63
+            "prob": 0.0945,
+            "prob_fair_odds": 10.58
           },
           {
             "score": "0-0",
@@ -2086,13 +2091,13 @@
           },
           {
             "score": "1-0",
-            "prob": 0.0885,
-            "prob_fair_odds": 11.3
+            "prob": 0.0881,
+            "prob_fair_odds": 11.35
           },
           {
             "score": "2-2",
-            "prob": 0.0816,
-            "prob_fair_odds": 12.25
+            "prob": 0.0815,
+            "prob_fair_odds": 12.27
           }
         ],
         "total_goals": {
@@ -2116,25 +2121,25 @@
           "8_fair_odds": 2500.0
         },
         "winning_margin": {
-          "home_by_1": 0.1005,
-          "home_by_1_fair_odds": 9.95,
-          "home_by_2": 0.0105,
-          "home_by_2_fair_odds": 95.24,
-          "home_by_3plus": 0.004,
-          "home_by_3plus_fair_odds": 250.0,
-          "draw": 0.7404,
+          "home_by_1": 0.0996,
+          "home_by_1_fair_odds": 10.04,
+          "home_by_2": 0.0098,
+          "home_by_2_fair_odds": 102.04,
+          "home_by_3plus": 0.0036,
+          "home_by_3plus_fair_odds": 277.78,
+          "draw": 0.7401,
           "draw_fair_odds": 1.35,
-          "away_by_1": 0.111,
-          "away_by_1_fair_odds": 9.01,
-          "away_by_2": 0.0209,
-          "away_by_2_fair_odds": 47.85,
-          "away_by_3plus": 0.0128,
-          "away_by_3plus_fair_odds": 78.12
+          "away_by_1": 0.1115,
+          "away_by_1_fair_odds": 8.97,
+          "away_by_2": 0.0217,
+          "away_by_2_fair_odds": 46.08,
+          "away_by_3plus": 0.0136,
+          "away_by_3plus_fair_odds": 73.53
         },
         "expected_goals": {
-          "home": 0.924,
-          "home_fair_odds": 1.08,
-          "away": 0.986,
+          "home": 0.92,
+          "home_fair_odds": 1.09,
+          "away": 0.99,
           "away_fair_odds": 1.01,
           "total": 1.91
         }
@@ -2212,157 +2217,5 @@
       "note": "Bracket-dependent; teams not yet determined.",
       "markets": null
     }
-  ],
-  "value_bets": {
-    "PAR-FRA": [
-      {
-        "selection": "cs_0-2",
-        "model_prob": 0.5786,
-        "bookmaker_odds": 8.0,
-        "implied_prob": 0.125,
-        "edge": 0.4536,
-        "kelly_fraction": 0.25,
-        "expected_value": 3.6288
-      },
-      {
-        "selection": "ah_1.5_away_win",
-        "model_prob": 0.7777,
-        "bookmaker_odds": 2.05,
-        "implied_prob": 0.4878,
-        "edge": 0.2899,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.5943
-      },
-      {
-        "selection": "btts_no",
-        "model_prob": 0.8114,
-        "bookmaker_odds": 1.65,
-        "implied_prob": 0.6061,
-        "edge": 0.2053,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.3388
-      },
-      {
-        "selection": "ah_-0.5_away_win",
-        "model_prob": 0.9921,
-        "bookmaker_odds": 1.2,
-        "implied_prob": 0.8333,
-        "edge": 0.1588,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.1905
-      },
-      {
-        "selection": "ou_2.5_under",
-        "model_prob": 0.7105,
-        "bookmaker_odds": 1.75,
-        "implied_prob": 0.5714,
-        "edge": 0.1391,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.2434
-      },
-      {
-        "selection": "away_win",
-        "model_prob": 0.9669,
-        "bookmaker_odds": 1.2,
-        "implied_prob": 0.8333,
-        "edge": 0.1336,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.1603
-      }
-    ],
-    "BRA-NOR": [
-      {
-        "selection": "cs_2-1",
-        "model_prob": 0.5639,
-        "bookmaker_odds": 8.5,
-        "implied_prob": 0.1176,
-        "edge": 0.4463,
-        "kelly_fraction": 0.25,
-        "expected_value": 3.7931
-      },
-      {
-        "selection": "home_win",
-        "model_prob": 0.9389,
-        "bookmaker_odds": 1.55,
-        "implied_prob": 0.6452,
-        "edge": 0.2937,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.4553
-      },
-      {
-        "selection": "ah_-0.5_home_win",
-        "model_prob": 0.9389,
-        "bookmaker_odds": 1.55,
-        "implied_prob": 0.6452,
-        "edge": 0.2937,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.4553
-      },
-      {
-        "selection": "ou_2.5_over",
-        "model_prob": 0.7645,
-        "bookmaker_odds": 1.85,
-        "implied_prob": 0.5405,
-        "edge": 0.224,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.4143
-      },
-      {
-        "selection": "btts_yes",
-        "model_prob": 0.6887,
-        "bookmaker_odds": 1.75,
-        "implied_prob": 0.5714,
-        "edge": 0.1173,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.2052
-      }
-    ],
-    "ARG-EGY": [
-      {
-        "selection": "cs_3-0",
-        "model_prob": 0.5703,
-        "bookmaker_odds": 5.5,
-        "implied_prob": 0.1818,
-        "edge": 0.3885,
-        "kelly_fraction": 0.25,
-        "expected_value": 2.1367
-      },
-      {
-        "selection": "ah_-1.5_home_win",
-        "model_prob": 0.7809,
-        "bookmaker_odds": 1.95,
-        "implied_prob": 0.5128,
-        "edge": 0.2681,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.5228
-      },
-      {
-        "selection": "btts_no",
-        "model_prob": 0.811,
-        "bookmaker_odds": 1.55,
-        "implied_prob": 0.6452,
-        "edge": 0.1658,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.2571
-      },
-      {
-        "selection": "ou_2.5_over",
-        "model_prob": 0.7678,
-        "bookmaker_odds": 1.65,
-        "implied_prob": 0.6061,
-        "edge": 0.1617,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.2669
-      },
-      {
-        "selection": "home_win",
-        "model_prob": 0.9689,
-        "bookmaker_odds": 1.2,
-        "implied_prob": 0.8333,
-        "edge": 0.1356,
-        "kelly_fraction": 0.25,
-        "expected_value": 0.1627
-      }
-    ]
-  }
+  ]
 }
