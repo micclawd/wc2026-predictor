@@ -7,6 +7,64 @@ The `model_version` field in `wc2026_betting_markets.json` reflects the current 
 
 ---
 
+## [v1.5.0] — 2026-07-04
+
+### Added
+- **Stake.com API client** (`scripts/stake_api.py`)
+  - GraphQL client for Stake.com's `_api/graphql` endpoint
+  - Implements all 3 required operations: `FixtureIndex`, `customBetOdds`, `BetSlipFooter_CustomSportBet`
+  - Pluggable `KasadaHeaderProvider` interface with 2 implementations:
+    - `ManualSessionProvider` — reads headers from JSON file (default, requires periodic refresh)
+    - `BrowserSessionProvider` — uses Playwright to auto-harvest Kasada headers (autonomous)
+  - Handles Kasada bot protection, Cloudflare clearance, rate limiting, and exponential backoff
+- **Stake bet placer** (`scripts/stake_bet_placer.py`)
+  - Bridges model output (`wc2026_betting_markets.json`) to actual Stake bets
+  - Two modes: `singles` (default, safer) and `multibet` (combine across matches, never within)
+  - Selection key mapping: 38 model keys → Stake market names (1X2, O/U, AH, BTTS, Double Chance)
+  - Built-in bet sizing rules:
+    - Min edge: 5%
+    - Min Kelly: 3%
+    - Min odds: 1.50
+    - Max 3 selections per match
+    - Max 5% exposure per match, 25% total
+    - Quarter-Kelly stake sizing
+  - Append-only `bets_log.jsonl` with full audit trail
+  - Dry-run mode (`--dry-run`) for testing without placing
+- **Session template** (`scripts/stake_session.example.json`)
+  - Documents how to harvest Kasada headers + session cookie from browser devtools
+- **Fixtures mapping** (`fixtures.json`)
+  - Template for mapping match keys (e.g. `CAN-MAR`) to Stake fixture slugs
+- **Stake integration docs** (`STAKE_INTEGRATION.md`)
+  - Full setup guide, API reference, troubleshooting, autonomous operation notes
+
+### Changed
+- `.gitignore` now excludes `stake_session.json` (contains auth tokens, NEVER commit)
+- README.md adds Stake.com integration section with quick start and Kasada warning
+
+### Security
+- `stake_session.json` is gitignored and contains a `_important_notes` field warning about token handling
+- All bet placement requires explicit `--dry-run` flag off (defaults to dry-run safe state)
+- Bet log includes `model_version` for audit trail
+
+### How to use
+```bash
+# Dry run (validate markets, show what would be placed)
+python3 scripts/stake_bet_placer.py --dry-run
+
+# Place singles (default)
+python3 scripts/stake_bet_placer.py
+
+# Place multibet across matches
+python3 scripts/stake_bet_placer.py --mode multibet
+```
+
+### Verified
+- All 40 model selection keys map to Stake markets
+- Dry-run tested end-to-end (parses betting_markets.json, resolves selections, calculates stakes)
+- Live placement requires valid Stake session (Kasada headers + session cookie)
+
+---
+
 ## [v1.4.2] — 2026-07-04
 
 ### Added

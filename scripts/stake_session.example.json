@@ -1,0 +1,25 @@
+{
+  "_comment": "Copy this file to stake_session.json and fill in your real values. Harvest the kpsdk_* headers from your browser's devtools (Network tab → any graphql request → Request Headers).",
+
+  "session_token": "your-session-token-from-cookie-here",
+
+  "kpsdk_headers": {
+    "x-kpsdk-cd": "",
+    "x-kpsdk-ct": "",
+    "x-kpsdk-h": "",
+    "x-kpsdk-v": ""
+  },
+
+  "cf_clearance": "your-cf-clearance-cookie-here",
+
+  "harvested_at": 1720000000,
+
+  "_important_notes": [
+    "Kasada headers (x-kpsdk-*) expire after ~10-30 minutes. You must refresh them periodically.",
+    "To harvest: open stake.com in your browser, log in, open devtools (F12), go to Network tab, click any graphql request, copy the 4 x-kpsdk-* headers from Request Headers.",
+    "The session cookie is also needed — copy the value of the 'session' cookie from Application > Cookies > stake.com.",
+    "cf_clearance is the Cloudflare clearance cookie — also in Application > Cookies.",
+    "DO NOT commit stake_session.json to git (it's in .gitignore).",
+    "For fully autonomous operation, consider implementing BrowserSessionProvider in stake_api.py (uses Playwright to harvest headers automatically)."
+  ]
+}

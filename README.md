@@ -173,6 +173,48 @@ When lineups aren't available yet, the engine falls back to full-squad `star_pow
 
 ---
 
+## Stake.com Bet Placement (Optional)
+
+The engine can autonomously place bets on Stake.com by combining model probabilities with live Stake odds. See [`STAKE_INTEGRATION.md`](STAKE_INTEGRATION.md) for full setup.
+
+### Quick start
+
+```bash
+# 1. Set up Stake session (one-time, refresh every 15 min)
+cp scripts/stake_session.example.json scripts/stake_session.json
+# Edit stake_session.json with your harvested tokens
+
+# 2. Update fixtures.json with Stake fixture slugs for upcoming matches
+
+# 3. Dry-run to see what would be placed
+python3 scripts/stake_bet_placer.py --dry-run
+
+# 4. Place bets for real
+python3 scripts/stake_bet_placer.py
+```
+
+### Bet sizing rules (built-in)
+
+| Rule | Value |
+|------|-------|
+| Min edge | 5% |
+| Min Kelly fraction | 3% |
+| Min odds | 1.50 |
+| Max selections per match | 3 |
+| Max exposure per match | 5% of bankroll |
+| Max total exposure | 25% of bankroll |
+| Kelly fraction | 0.25 (quarter-Kelly) |
+
+### ⚠️ Kasada bot protection
+
+Stake.com uses Kasada for bot protection. Every request requires 4 dynamically-generated headers that cannot be statically copied. The default `ManualSessionProvider` requires you to re-harvest headers every ~15 minutes from your browser devtools.
+
+For fully autonomous operation, use `BrowserSessionProvider` (Playwright-based, auto-harvests headers) or integrate a third-party Kasada solver service.
+
+**Never commit `stake_session.json` — it contains auth tokens.** It's already in `.gitignore`.
+
+---
+
 ## Model Details
 
 ### Iter-4e decision rule (the winning config)

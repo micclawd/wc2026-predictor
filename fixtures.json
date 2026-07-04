@@ -1,0 +1,12 @@
+{
+  "_comment": "Map WC 2026 matches to Stake.com fixture slugs. The slug is the part after the last dash in the Stake.com match URL. Example: https://stake.com/sports/soccer/fifa_world/canada-vs-morocco/46602331-w73-w75 → slug is '46602331-w73-w75'. Update this file before each match round by browsing Stake.com and copying the slugs.",
+
+  "CAN-MAR": "TODO_FIND_SLUG_FOR_CAN_MAR",
+  "PAR-FRA": "TODO_FIND_SLUG_FOR_PAR_FRA",
+  "BRA-NOR": "TODO_FIND_SLUG_FOR_BRA_NOR",
+  "MEX-ENG": "TODO_FIND_SLUG_FOR_MEX_ENG",
+  "POR-ESP": "TODO_FIND_SLUG_FOR_POR_ESP",
+  "USA-BEL": "TODO_FIND_SLUG_FOR_USA_BEL",
+  "ARG-EGY": "TODO_FIND_SLUG_FOR_ARG_EGY",
+  "SUI-COL": "TODO_FIND_SLUG_FOR_SUI_COL"
+}
