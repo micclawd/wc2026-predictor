@@ -63,3 +63,6 @@ scripts/stake_session.json
 # Jupyter
 .ipynb_checkpoints/
 *.ipynb
+
+# Bet log — generated at runtime, contains stake/odds/edge history
+bets_log.jsonl
