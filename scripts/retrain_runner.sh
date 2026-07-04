@@ -31,6 +31,10 @@ if [ "$ITER" = "final" ]; then
 else
   log "running wc_predictor_iter$ITER.py"
   python3 "scripts/wc_predictor_iter$ITER.py" 2>&1 | tee -a "$LOG" | tail -50
+
+  # Check tier promotion (0 → 1, 1 → 2)
+  log "checking tier promotion ..."
+  python3 scripts/tier_promotion.py "$ITER" 2>&1 | tee -a "$LOG"
 fi
 
 log "=== retrain iter-$ITER DONE ==="

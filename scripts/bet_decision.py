@@ -28,13 +28,30 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+sys.path.insert(0, str(Path(__file__).parent))
+try:
+    from sizing_tiers import CURRENT_TIER as TIER
+except ImportError:
+    TIER = {
+        "max_exposure_pct": 0.05,
+        "kelly_fraction": 0.25,
+        "max_stake_pct": 0.0167,
+        "min_edge": 0.05,
+        "min_kelly": 0.03,
+        "min_odds": 1.50,
+        "max_selections": 3,
+        "global_exposure_cap": 0.25,
+    }
+
 # Betting thresholds (Michael's policy)
-MIN_EDGE = 0.05              # +5% edge required
-MIN_KELLY = 0.03             # 3% Kelly fraction
-MIN_ODDS = 1.50              # no sub-1.50 favorites
-MAX_SELECTIONS_PER_MATCH = 3
-MAX_EXPOSURE_PER_MATCH = 0.05  # 5% of bankroll
-KELLY_FRACTION = 0.25         # use 1/4 Kelly
+MIN_EDGE = TIER["min_edge"]                # +5% edge required
+MIN_KELLY = TIER["min_kelly"]              # 3% Kelly fraction
+MIN_ODDS = TIER["min_odds"]                # no sub-1.50 favorites
+MAX_SELECTIONS_PER_MATCH = TIER["max_selections"]
+MAX_EXPOSURE_PER_MATCH = TIER["max_exposure_pct"]
+KELLY_FRACTION = TIER["kelly_fraction"]    # tier-controlled
+MAX_STAKE_PCT_PER_BET = TIER["max_stake_pct"]
+GLOBAL_EXPOSURE_CAP = TIER["global_exposure_cap"]
 
 # Markets we bet on (skip CS — model overconfident)
 ALLOWED_MARKETS = {
@@ -154,9 +171,9 @@ def filter_candidates(
         if reasons:
             rejected.append({**c, "rejected_reasons": reasons})
         else:
-            # size the stake: 1/4 Kelly, capped at MAX_EXPOSURE_PER_MATCH
-            stake_pct = c["kelly"] * KELLY_FRACTION
-            stake_pct = min(stake_pct, MAX_EXPOSURE_PER_MATCH)
+            # size the stake: KELLY_FRACTION, capped at MAX_STAKE_PCT_PER_BET
+            # and the per-match exposure cap
+            stake_pct = min(c["kelly"] * KELLY_FRACTION, MAX_STAKE_PCT_PER_BET)
             stake = round(bankroll * stake_pct, 4)
             passed_filter.append({**c, "stake_pct": stake_pct, "stake": stake})
 
