@@ -30,7 +30,7 @@ def flatten_markets(raw: Dict[str, Any]) -> Dict[str, Any]:
       - AH -0.5 / +0.5: {"-0.5_home", "-0.5_away", "+0.5_home", "+0.5_away"}
       - BTTS: {yes, no}
     """
-    flat: Dict[str, Any] = {"1X2": {}, "O/U 2.5": {}, "AH": {}, "BTTS": {}}
+    flat: Dict[str, Any] = {"1X2": {}, "O/U 2.5": {}, "AH": {}, "BTTS": {}, "Correct Score": {}}
     outcome_map: Dict[str, str] = {}
     fixture_id = raw.get("fixture_id", "")
 
@@ -102,6 +102,17 @@ def flatten_markets(raw: Dict[str, Any]) -> Dict[str, Any]:
                     outcome_map["BTTS|no"] = o["id"]
             break
 
+    # Correct Score (only 0-1, for tier 0 CS leg)
+    for mkt_name, outcomes in markets.items():
+        if "correct score" in mkt_name.lower():
+            for o in outcomes:
+                n = o["name"]
+                # Stake uses "0:1" or "0-1"
+                if n in ("0:1", "0-1"):
+                    flat["Correct Score"]["0-1"] = o["odds"]
+                    outcome_map["Correct Score 0-1|0-1"] = o["id"]
+            break
+
     return {
         "fixture_id": fixture_id,
         "match": raw.get("match", ""),
@@ -111,6 +122,7 @@ def flatten_markets(raw: Dict[str, Any]) -> Dict[str, Any]:
         "O/U 2.5": flat["O/U 2.5"],
         "AH": flat["AH"],
         "BTTS": flat["BTTS"],
+        "Correct Score": flat["Correct Score"],
         "outcome_map": outcome_map,
         "raw": raw,  # keep raw for place_bet.py fallback matching
     }
@@ -147,7 +159,7 @@ def main():
         print("❌ --fixture-id is required", file=sys.stderr)
         sys.exit(1)
 
-    raw = mcp.stake.stake_get_fixture_odds(fixture_id=fixture_id, main_only=True)
+    raw = mcp.stake.stake_get_fixture_odds(fixture_id=fixture_id, main_only=False)
     flat = flatten_markets(raw.get("result", raw))
 
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
@@ -157,6 +169,7 @@ def main():
     print(f"  O/U 2.5: {flat['O/U 2.5']}")
     print(f"  AH: {flat['AH']}")
     print(f"  BTTS: {flat['BTTS']}")
+    print(f"  CS 0-1: {flat['Correct Score']}")
 
 
 if __name__ == "__main__":

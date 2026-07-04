@@ -97,6 +97,12 @@ def matches(mkt_name: str, sel_name: str, market: str, selection: str) -> bool:
         if s == "no":
             return name == "no"
 
+    if m == "correct score 0-1":
+        if "correct score" not in mkt:
+            return False
+        if s == "0-1":
+            return name in ("0:1", "0-1")
+
     return False
 
 
