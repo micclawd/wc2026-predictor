@@ -7,6 +7,41 @@ The `model_version` field in `wc2026_betting_markets.json` reflects the current 
 
 ---
 
+## [v1.4.1] — 2026-07-04
+
+### Added
+- **GitHub upload package** (`github_upload/` directory)
+  - Portable paths via `scripts/config.py` (no more hardcoded `/home/z/my-project/`)
+  - `setup.sh` clones the data repo and installs numpy automatically
+  - `push_to_github.sh` automates the git push to a new GitHub repo
+  - `.gitignore` excludes data/, cache/, and regenerated JSON outputs
+  - `LICENSE` (MIT), `requirements.txt`, top-level `README.md` for GitHub
+  - All scripts updated to import from `config.py` with fallback to direct paths
+- **Downloadable archives**:
+  - `download/wc2026-predictor.tar.gz` (115 KB)
+  - `download/wc2026-predictor.zip` (138 KB)
+
+### Changed
+- `wc_predictor.py`, `wc_predictor_iter4.py`, `wc_predictor_iter6.py`, `espn_lineups.py`, `wc_betting_predictor.py` now import paths from `config.py` (with backward-compatible fallback)
+
+### How to push to GitHub
+```bash
+# Option 1: Create a new repo on GitHub, then:
+cd /home/z/my-project/github_upload
+bash push_to_github.sh https://github.com/<your-username>/wc2026-predictor.git
+
+# Option 2: With a personal access token:
+bash push_to_github.sh https://<token>@github.com/<your-username>/wc2026-predictor.git
+
+# Option 3: Download the tarball/zip and push manually:
+#   1. Download download/wc2026-predictor.tar.gz
+#   2. tar xzf wc2026-predictor.tar.gz
+#   3. cd wc2026-predictor
+#   4. bash push_to_github.sh https://github.com/<your-username>/wc2026-predictor.git
+```
+
+---
+
 ## [v1.4.0] — 2026-07-04
 
 ### Added
