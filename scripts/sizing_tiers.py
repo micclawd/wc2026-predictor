@@ -15,7 +15,7 @@ TIER_0 = {
     "min_edge": 0.05,
     "min_kelly": 0.03,
     "min_odds": 1.50,
-    "max_selections": 3,
+    "max_selections": 4,             # raised 3→4 on 2026-07-04 to allow CS leg
     "global_exposure_cap": 0.25,     # hard floor across all open bets
 }
 

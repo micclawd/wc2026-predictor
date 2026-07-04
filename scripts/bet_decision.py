@@ -53,14 +53,18 @@ KELLY_FRACTION = TIER["kelly_fraction"]    # tier-controlled
 MAX_STAKE_PCT_PER_BET = TIER["max_stake_pct"]
 GLOBAL_EXPOSURE_CAP = TIER["global_exposure_cap"]
 
-# Markets we bet on (skip CS — model overconfident)
+# Markets we bet on
+# CS 0-1 added 2026-07-04 per Michael directive (tier 0 validation test)
 ALLOWED_MARKETS = {
     "1X2": ["home_win", "draw", "away_win"],
     "O/U 2.5": ["over", "under"],
     "AH -0.5": ["home_win", "away_win"],
     "AH +0.5": ["home_win", "away_win"],
     "BTTS": ["yes", "no"],
+    "Correct Score 0-1": ["0-1"],  # CS allowed at tier 0 only
 }
+CS_MARKET = "Correct Score 0-1"
+CS_MAX_PER_MATCH = 1
 
 
 def kelly_fraction(model_prob: float, odds: float) -> float:
@@ -130,6 +134,19 @@ def get_liquid_selections(
             continue
         out.append(_build_candidate("BTTS", sel, mp, odds))
 
+    # Correct score 0-1 (CS — only allowed at tier 0 validation)
+    cs_top5 = markets.get("correct_score_top5", [])
+    if cs_top5:
+        # find the 0-1 entry in the model output
+        cs_01 = next((c for c in cs_top5 if c.get("score") == "0-1"), None)
+        if cs_01:
+            mp = cs_01.get("prob", 0)
+            # Stake odds for 0-1 (use exact key)
+            stake_cs = stake_odds.get("Correct Score", {})
+            odds = stake_cs.get("0-1", stake_cs.get("0:1", 0))
+            if odds and odds >= MIN_ODDS:
+                out.append(_build_candidate(CS_MARKET, "0-1", mp, odds))
+
     return out
 
 
@@ -180,6 +197,14 @@ def filter_candidates(
     # Sort by edge descending, take top N
     passed_filter.sort(key=lambda x: x["edge"], reverse=True)
     selected = passed_filter[:MAX_SELECTIONS_PER_MATCH]
+
+    # CS-specific cap: max 1 CS leg per match (only 1 candidate so usually a no-op,
+    # but defensive if the data ever has more)
+    cs_in_selected = [s for s in selected if s["market"] == CS_MARKET]
+    if len(cs_in_selected) > CS_MAX_PER_MATCH:
+        cs_in_selected.sort(key=lambda x: x["edge"], reverse=True)
+        keep_ids = {id(s) for s in cs_in_selected[:CS_MAX_PER_MATCH]}
+        selected = [s for s in selected if s["market"] != CS_MARKET or id(s) in keep_ids]
 
     # Enforce total exposure cap
     if sum(s["stake_pct"] for s in selected) > MAX_EXPOSURE_PER_MATCH:
