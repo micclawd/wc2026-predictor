@@ -1,0 +1,44 @@
+{
+  "PAR-FRA": {
+    "home_win": 12.0,
+    "draw": 7.5,
+    "away_win": 1.20,
+    "ou_2.5_over": 2.10,
+    "ou_2.5_under": 1.75,
+    "ah_-0.5_home_win": 12.0,
+    "ah_-0.5_away_win": 1.20,
+    "ah_1.5_home_win": 1.85,
+    "ah_1.5_away_win": 2.05,
+    "btts_yes": 2.30,
+    "btts_no": 1.65,
+    "cs_0-2": 8.0,
+    "cs_0-1": 9.0,
+    "cs_1-2": 11.0
+  },
+  "BRA-NOR": {
+    "home_win": 1.55,
+    "draw": 4.20,
+    "away_win": 5.50,
+    "ou_2.5_over": 1.85,
+    "ou_2.5_under": 2.00,
+    "ah_-0.5_home_win": 1.55,
+    "ah_-0.5_away_win": 2.50,
+    "btts_yes": 1.75,
+    "btts_no": 2.10,
+    "cs_2-1": 8.5,
+    "cs_1-0": 6.5
+  },
+  "ARG-EGY": {
+    "home_win": 1.20,
+    "draw": 6.50,
+    "away_win": 12.0,
+    "ou_2.5_over": 1.65,
+    "ou_2.5_under": 2.25,
+    "ah_-1.5_home_win": 1.95,
+    "ah_-1.5_away_win": 1.90,
+    "btts_yes": 2.50,
+    "btts_no": 1.55,
+    "cs_3-0": 5.5,
+    "cs_2-0": 6.0
+  }
+}
