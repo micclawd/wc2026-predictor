@@ -132,9 +132,13 @@ class TargetedDecisionRuleModel:
         score = self.pick_template(dr, home_star, away_star, home_is_host)
 
         # Build distribution
+        # v1.5.0 calibration: lowered mode weight from 0.55 to 0.35 and raised
+        # Poisson weight from 0.15 to 0.35 to soften 1X2 outcome probs in
+        # close-ELO-gap cases (e.g. BRA 2114 vs NOR 2037 = 93% BRA was wrong,
+        # actual NOR 2-1). Alts now use 0.06 each (4 alts * 0.06 = 0.24).
         probs = np.zeros((self.max_goals + 1, self.max_goals + 1))
         h, a = score
-        probs[h, a] = 0.55
+        probs[h, a] = 0.35
         if score[0] > score[1]:
             alts = [(2, 0), (2, 1), (3, 0), (1, 0), (3, 1), (3, 2)]
         elif score[0] < score[1]:
@@ -143,8 +147,8 @@ class TargetedDecisionRuleModel:
             alts = [(1, 1), (0, 0), (2, 2), (1, 0), (0, 1)]
         alts = [s for s in alts if s != score]
         for s in alts[:4]:
-            probs[s[0], s[1]] += 0.075
-        # 15% from Poisson(2.4)
+            probs[s[0], s[1]] += 0.06
+        # 35% from Poisson(2.4)
         import math
         lh = max(2.4 * (1 / (1 + 10 ** (-dr / 400))), 0.35)
         la = max(2.4 - lh, 0.35)
@@ -152,7 +156,7 @@ class TargetedDecisionRuleModel:
         a_range = np.arange(self.max_goals + 1)
         ph = np.exp(-lh) * (lh ** h_range) / np.array([math.factorial(h) for h in h_range])
         pa = np.exp(-la) * (la ** a_range) / np.array([math.factorial(a) for a in a_range])
-        probs += 0.15 * np.outer(ph, pa)
+        probs += 0.35 * np.outer(ph, pa)
         probs /= probs.sum()
         return ScoreDist(self.max_goals, probs)
 
