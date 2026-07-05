@@ -115,24 +115,37 @@ def backtest_one_config(
             actual_outcome = "A"
         else:
             actual_outcome = "D"
-        # Top scoreline
-        top_score = max(dist.probs.items(), key=lambda x: x[1])[0]
+        # dist.probs is a 9x9 ndarray: probs[i][j] = P(home=i, away=j). max_goals = 8.
+        probs = dist.probs
+        mg = dist.max_goals
+        # Top scoreline (mode)
+        flat_idx = int(np.argmax(probs))
+        top_home, top_away = flat_idx // (mg + 1), flat_idx % (mg + 1)
+        top_score = f"{top_home}-{top_away}"
         if top_score == actual_score:
             exact += 1
-        # Top-3
-        top3_scores = [s for s, _ in sorted(dist.probs.items(), key=lambda x: -x[1])[:3]]
+        # Top-3 scorelines
+        flat = probs.flatten()
+        top3_idx = np.argsort(flat)[::-1][:3]
+        top3_scores = [f"{int(i // (mg + 1))}-{int(i % (mg + 1))}" for i in top3_idx]
         if actual_score in top3_scores:
             top3 += 1
-        # Outcome
-        h_prob = sum(p for s, p in dist.probs.items() if int(s.split("-")[0]) > int(s.split("-")[1]))
-        a_prob = sum(p for s, p in dist.probs.items() if int(s.split("-")[0]) < int(s.split("-")[1]))
-        d_prob = sum(p for s, p in dist.probs.items() if int(s.split("-")[0]) == int(s.split("-")[1]))
+        # 1X2 outcome probs (outcome_probs() returns Tuple[float, float, float] = (H, D, A))
+        if callable(getattr(dist, "outcome_probs", None)) and not isinstance(getattr(dist, "outcome_probs", None), dict):
+            h_prob, d_prob, a_prob = dist.outcome_probs()
+        elif isinstance(getattr(dist, "outcome_probs", None), dict):
+            op = dist.outcome_probs
+            h_prob, d_prob, a_prob = op["H"], op["D"], op["A"]
+        else:
+            h_prob = float(sum(probs[i, j] for i in range(mg + 1) for j in range(mg + 1) if i > j))
+            d_prob = float(sum(probs[i, i] for i in range(mg + 1)))
+            a_prob = float(sum(probs[i, j] for i in range(mg + 1) for j in range(mg + 1) if i < j))
         probs_norm = {"H": h_prob, "D": d_prob, "A": a_prob}
         pred_outcome = max(probs_norm.items(), key=lambda x: x[1])[0]
         if pred_outcome == actual_outcome:
             outcome += 1
         # Brier
-        actual_oh = {"H": 1, "D": 0, "A": 0}[actual_outcome]
+        actual_oh = 1 if actual_outcome == "H" else 0
         brier_sum += (h_prob - actual_oh) ** 2 + (d_prob - 0) ** 2 + (a_prob - (1 - actual_oh)) ** 2
         # Log loss
         p_actual = max(probs_norm[actual_outcome], 1e-9)
