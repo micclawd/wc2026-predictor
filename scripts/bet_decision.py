@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -65,6 +66,122 @@ ALLOWED_MARKETS = {
 }
 CS_MARKET = "Correct Score 0-1"
 CS_MAX_PER_MATCH = 1
+
+
+# ---------------------------------------------------------------------------
+# v1.5.x Stake odds parser (added 2026-07-06)
+#
+# fetch_stake_odds_mcp.py writes a FLAT dict of "Market|Selection" -> odds,
+# not the nested {"1X2": {"home_win": 1.77, ...}} shape this script used
+# to read. The old get_liquid_selections looked up stake_odds["1X2"]["home_win"]
+# which always returns None against the v1.5.x file, so EVERY selection
+# silently dropped to 0 candidates. This parser converts flat -> nested
+# so the rest of the pipeline can stay unchanged.
+# ---------------------------------------------------------------------------
+
+# Stake "1X2 (90' + Stoppage Time)" is the main moneyline market
+_RE_1X2 = re.compile(r"^1[xX]2[^|]*\|\s*(Brazil|Norway|Draw|Home|Away|.+?)\s*$", re.IGNORECASE)
+_RE_AH_LINE = re.compile(r"Asian Handicap[^|]*\((\d+)\)[^|]*\|\s*([A-Za-z][\w\s\.\-]*?)\s*\(([+\-][\d\.]+)\)\s*$")
+_RE_OU_LINE = re.compile(r"Asian Total[^|]*\((\d+)\)[^|]*\|\s*(Over|Under)\s+([\d\.]+)\s*$")
+_RE_OU_BARE = re.compile(r"^Over/Under[^|]*\|\s*(Over|Under)\s+([\d\.]+)\s*$", re.IGNORECASE)
+_RE_BTTS = re.compile(r"^Both Teams? to Score[^|]*\|\s*(Yes|No)\s*$", re.IGNORECASE)
+_RE_CS_SCORE = re.compile(r"^Correct Score[^|]*\|\s*(\d+)[:\-](\d+)\s*$", re.IGNORECASE)
+
+
+def _parse_stake_odds_v15(flat_payload: Dict[str, Any]) -> Dict[str, Any]:
+    """Convert v1.5.x flat markets_flat -> nested dict shape.
+
+    Input keys look like:
+      "1x2 - 1x2 (90' + Stoppage Time)|Brazil"  -> 1.77
+      "Asian Handicap - Asian Handicap (90' + Stoppage Time) (4)|Brazil (-0.5)" -> 1.77
+      "Asian Total - Asian Total (90' + Stoppage Time) (5)|Over 2.5" -> 1.68
+      "Both Teams to Score - Both Teams to Score (90' + Stoppage Time)|Yes" -> 1.59
+      "Correct Score - Correct Score (90' + Stoppage Time)|0:1" -> 15.0
+
+    Output shape matches what get_liquid_selections() expects:
+      {"1X2": {"home_win": 1.77, "draw": 3.75, "away_win": 4.5},
+       "O/U 2.5": {"over": 1.68, "under": 2.15},
+       "AH": {"-0.5_home": 1.77, "-0.5_away": 2.05, "+0.5_home": 1.22, "+0.5_away": 1.66},
+       "BTTS": {"yes": 1.59, "no": 2.27},
+       "Correct Score": {"0-1": 15.0, "0:1": 15.0}}
+    """
+    # Handle both shapes: the v1.5.x file has top-level "markets_flat" key,
+    # or you can pass the inner dict directly.
+    if "markets_flat" in flat_payload and isinstance(flat_payload["markets_flat"], dict):
+        flat = flat_payload["markets_flat"]
+    else:
+        flat = flat_payload
+
+    nested: Dict[str, Any] = {"1X2": {}, "O/U 2.5": {}, "AH": {}, "BTTS": {}, "Correct Score": {}}
+    home_abbr = None
+    away_abbr = None
+
+    for key, odds in flat.items():
+        if not isinstance(odds, (int, float)) or odds <= 1.0:
+            continue
+        # 1X2
+        if key.lower().startswith("1x2 - 1x2"):
+            m = re.match(r"^1[xX]2[^|]*\|\s*(.+?)\s*$", key, re.IGNORECASE)
+            if not m:
+                continue
+            sel = m.group(1).strip()
+            if sel.lower() in ("draw", "x"):
+                nested["1X2"]["draw"] = float(odds)
+            elif "home" in sel.lower() or sel.lower() == "1":
+                nested["1X2"]["home_win"] = float(odds)
+            elif "away" in sel.lower() or sel.lower() == "2":
+                nested["1X2"]["away_win"] = float(odds)
+            else:
+                # first time we see a non-Draw team name, lock it in as home_abbr
+                if home_abbr is None:
+                    home_abbr = sel
+                    nested["1X2"]["home_win"] = float(odds)
+                elif away_abbr is None and sel != home_abbr:
+                    away_abbr = sel
+                    nested["1X2"]["away_win"] = float(odds)
+            continue
+
+        # Asian Handicap with (N) suffix
+        m = re.match(r"Asian Handicap[^|]*\((\d+)\)[^|]*\|\s*([A-Za-z][\w\s\.\-]*?)\s*\(([+\-][\d\.]+)\)\s*$", key)
+        if m:
+            _, team, line = m.group(1), m.group(2).strip(), m.group(3)
+            side = "home" if team == (home_abbr or "Brazil") else "away"
+            nested["AH"][f"{line}_{side}"] = float(odds)
+            continue
+
+        # Asian Total with (N) suffix
+        m = re.match(r"Asian Total[^|]*\((\d+)\)[^|]*\|\s*(Over|Under)\s+([\d\.]+)\s*$", key)
+        if m:
+            line = float(m.group(3))
+            side = m.group(2).lower()
+            if line == 2.5:
+                nested["O/U 2.5"][side] = float(odds)
+            continue
+
+        # Bare Over/Under (no (N) suffix)
+        m = re.match(r"^Over/Under[^|]*\|\s*(Over|Under)\s+([\d\.]+)\s*$", key, re.IGNORECASE)
+        if m:
+            line = float(m.group(2))
+            side = m.group(1).lower()
+            if line == 2.5:
+                nested["O/U 2.5"].setdefault(side, float(odds))
+            continue
+
+        # BTTS
+        m = re.match(r"^Both Teams? to Score[^|]*\|\s*(Yes|No)\s*$", key, re.IGNORECASE)
+        if m:
+            nested["BTTS"][m.group(1).lower()] = float(odds)
+            continue
+
+        # Correct Score
+        m = re.match(r"^Correct Score[^|]*\|\s*(\d+)[:\-](\d+)\s*$", key, re.IGNORECASE)
+        if m:
+            score = f"{m.group(1)}-{m.group(2)}"
+            nested["Correct Score"][score] = float(odds)
+            nested["Correct Score"][f"{m.group(1)}:{m.group(2)}"] = float(odds)
+            continue
+
+    return nested
 
 
 def kelly_fraction(model_prob: float, odds: float) -> float:
@@ -229,7 +346,17 @@ def main():
     args = ap.parse_args()
 
     markets_data = json.loads(Path(args.model_probs).read_text())
-    stake_odds = json.loads(Path(args.stake_odds).read_text())
+    raw_stake = json.loads(Path(args.stake_odds).read_text())
+    # v1.5.x fetch_stake_odds_mcp.py writes a flat "markets_flat" dict.
+    # Convert to the nested {"1X2": {home_win:.., ..}} shape that
+    # get_liquid_selections() expects. Old nested payloads are passed through.
+    if isinstance(raw_stake, dict) and (
+        "markets_flat" in raw_stake or any("|" in str(k) for k in raw_stake.keys())
+    ):
+        stake_odds = _parse_stake_odds_v15(raw_stake)
+        print(f"  parsed {sum(len(v) for v in stake_odds.values()) if isinstance(stake_odds, dict) else 0} Stake outcomes from v1.5.x flat format")
+    else:
+        stake_odds = raw_stake
 
     # Find this match in the model output
     match = next((m for m in markets_data["matches"]
